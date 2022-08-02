@@ -1,0 +1,19 @@
+@use "sass:math";
+@use "variables" as *;
+
+@function rem($number) {
+  @if unitless($number) {
+    $default-one-rem-in-pixel: 16;
+    @return math.div($number, $default-one-rem-in-pixel) * 1rem;
+  }
+
+  @error "Sorry, this '#{$number}' must have not any unit";
+}
+
+@function lighten-color($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function darken-color($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}

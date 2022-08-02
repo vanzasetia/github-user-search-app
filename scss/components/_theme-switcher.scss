@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+
+.theme-switcher__text {
+  display: flex;
+  align-items: center;
+  gap: rem(16);
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: rem(2.5);
+  text-transform: uppercase;
+}

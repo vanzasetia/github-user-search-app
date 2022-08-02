@@ -1,0 +1,68 @@
+@use "../abstracts" as *;
+
+$-placeholder-and-error-input-top-position: rem(20);
+
+.search-form {
+  position: relative;
+  margin-top: rem(36);
+  margin-bottom: rem(16);
+}
+
+.search-form__input {
+  display: block;
+  border: none;
+  border-radius: rem(15);
+  background: url("../svg/icon-search.svg") no-repeat top rem(20) left #{rem(16)}/#{rem(
+      20
+    )};
+  padding: rem(18) rem(98) rem(18) rem(45);
+  width: 100%;
+  height: rem(60);
+}
+
+.search-form__placeholder {
+  position: absolute;
+  top: $-placeholder-and-error-input-top-position;
+  left: rem(45);
+  pointer-events: none;
+
+  @include prefers-motion {
+    transition: top var(--primary-transition), left var(--primary-transition);
+  }
+}
+
+.search-form__input:not(:placeholder-shown) ~ .search-form__placeholder {
+  top: rem(-25);
+  left: rem(35);
+}
+
+.search-form__button {
+  display: inline-block;
+  position: absolute;
+  top: rem(7);
+  right: rem(7);
+  cursor: pointer;
+  border: none;
+  border-radius: rem(10);
+  background-color: var(--blue);
+  padding: rem(13) rem(18);
+  color: var(--white);
+  font-weight: 700;
+
+  @include on-event {
+    background-color: hsl(212, 100%, 69%);
+  }
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition);
+  }
+}
+
+.search-form__error {
+  position: absolute;
+  top: $-placeholder-and-error-input-top-position;
+  right: rem(100);
+  pointer-events: none;
+  color: hsl(0, 91%, 62%);
+  font-weight: 700;
+}

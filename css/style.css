@@ -1,0 +1,602 @@
+/*------------------------------------*\
+  #CSS-RESET
+\*------------------------------------*/
+/*  Modern CSS reset - https://piccalil.li/blog/a-modern-css-reset/ */
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+}
+/*------------------------------------*\
+  #HTML5-BOILERPLATE
+\*------------------------------------*/
+/* Source: https://github.com/h5bp/html5-boilerplate/blob/main/dist/css/style.css */
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+/*
+ * DISCLAIMER!
+ * I had added some changes based on my preference.
+ * This is not the original styling!
+ */
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ */
+::-moz-selection {
+  text-shadow: none;
+}
+
+::selection {
+  text-shadow: none;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+/*
+ * Don't allow horizontal resizing of textareas.
+ */
+textarea {
+  resize: vertical;
+}
+
+:root {
+  --blue: hsl(212, 100%, 50%);
+  --light-blue: hsl(217, 20%, 51%);
+  --dark-blue-100: hsl(217, 35%, 45%);
+  --dark-blue-200: hsl(222, 41%, 20%);
+  --very-dark-blue-100: hsl(217, 21%, 21%);
+  --very-dark-blue-200: hsl(220, 18%, 16%);
+  --very-dark-blue-300: hsl(220, 40%, 13%);
+  --very-light-blue: hsl(227, 100%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --primary-box-shadow: 0 1rem 1.875rem -0.625rem rgba(70, 96, 187, 0.2);
+  --primary-transition: 250ms ease-in-out;
+  --header-logo-color: var(--very-dark-blue-200);
+  --link-color: var(--dark-blue-100);
+  --body-background-color: var(--very-light-blue);
+  --body-font-color: var(--dark-blue-100);
+  --result-background-color: var(--white);
+  --result-name-color: var(--very-dark-blue-100);
+  --result-statistic-background-color: var(--very-light-blue);
+  --result-number-color: var(--very-dark-blue-100);
+  --theme-switcher-text-hover-color: var(--very-dark-blue-200);
+  --search-form-input-background-color: var(--white);
+  --search-form-input-color: var(--very-dark-blue-200);
+  --focus-visible-outline-color: var(--very-dark-blue-300);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --header-logo-color: var(--white);
+    --link-color: var(--white);
+    --body-background-color: var(--very-dark-blue-300);
+    --body-font-color: var(--white);
+    --result-background-color: var(--dark-blue-200);
+    --result-name-color: var(--white);
+    --result-statistic-background-color: var(--very-dark-blue-300);
+    --result-number-color: var(--white);
+    --theme-switcher-text-hover-color: hsla(222, 44%, 70%);
+    --search-form-input-background-color: var(--dark-blue-200);
+    --search-form-input-color: var(--white);
+    --focus-visible-outline-color: var(--white);
+    --primary-box-shadow: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+  }
+}
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background-color: rgb(22, 95, 204);
+  color: rgb(242, 242, 242);
+}
+
+::-moz-selection {
+  background-color: rgb(22, 95, 204);
+  color: rgb(242, 242, 242);
+}
+
+/**
+ * Screen Reader Class
+ * 
+ * To hide content visually.
+ *
+ * For more information: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034
+ */
+.sr-only {
+  -webkit-clip-path: inset(50%) !important;
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+body {
+  padding: 1.875rem 1.5rem;
+  font: 0.8125rem/1.6 "Space Mono", monospace;
+}
+
+p {
+  font-size: 1em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/** 
+ * Avoid overloading a user with 
+ * sound from a video that 
+ * autoplays when the page is loaded.
+ *
+ * Source: https://github.com/AllThingsSmitty/css-protips#hide-autoplay-videos-that-arent-muted
+ */
+video[autoplay]:not([muted]) {
+  display: none;
+}
+
+/**
+ * Set font-size on Form Elements for a 
+ * Better Mobile Experience
+ *
+ * To avoid mobile browsers (iOS Safari,
+ * et al.) from zooming in on HTML form 
+ * elements when a <select> drop-down is
+ * tapped, add font-size to the selector
+ * rule.
+ *
+ * Source: https://github.com/AllThingsSmitty/css-protips#set-font-size-on-form-elements-for-a-better-mobile-experience
+ */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  font-size: 1rem;
+}
+
+svg {
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.skip-content {
+  display: inline-block;
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  transform: translateX(-200%);
+  z-index: 200;
+  background-color: rgb(250, 250, 250);
+  padding: 1em 2em;
+  font-size: 1.25rem;
+  text-decoration: 0.1em solid;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skip-content {
+    transition: transform 0.3s ease 0s;
+  }
+}
+.skip-content:focus,
+.skip-content:focus-visible {
+  transform: translate(0);
+  outline: 0.2em dashed var(--very-dark-blue-200);
+  outline-offset: 0.25em;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .skip-content:focus,
+  .skip-content:focus-visible {
+    outline-color: var(--white);
+  }
+}
+.hidden {
+  visibility: hidden;
+  width: 0.0625rem;
+  height: 0;
+}
+
+/*
+ * Make sure when the user disable
+ * JavaScript the content is hidden.
+ */
+.no-js header,
+.no-js main,
+.no-js footer {
+  display: none !important;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 21.875rem;
+}
+
+.theme-switcher__text {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.15625rem;
+  text-transform: uppercase;
+}
+
+.search-form {
+  position: relative;
+  margin-top: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.search-form__input {
+  display: block;
+  border: none;
+  border-radius: 0.9375rem;
+  background: url("../svg/icon-search.svg") no-repeat top 1.25rem left 1rem/1.25rem;
+  padding: 1.125rem 6.125rem 1.125rem 2.8125rem;
+  width: 100%;
+  height: 3.75rem;
+}
+
+.search-form__placeholder {
+  position: absolute;
+  top: 1.25rem;
+  left: 2.8125rem;
+  pointer-events: none;
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .search-form__placeholder {
+    transition: top var(--primary-transition), left var(--primary-transition);
+  }
+}
+
+.search-form__input:not(:placeholder-shown) ~ .search-form__placeholder {
+  top: -1.5625rem;
+  left: 2.1875rem;
+}
+
+.search-form__button {
+  display: inline-block;
+  position: absolute;
+  top: 0.4375rem;
+  right: 0.4375rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.625rem;
+  background-color: var(--blue);
+  padding: 0.8125rem 1.125rem;
+  color: var(--white);
+  font-weight: 700;
+}
+.search-form__button:hover,
+.search-form__button:active {
+  background-color: hsl(212deg, 100%, 69%);
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .search-form__button {
+    transition: background-color var(--primary-transition);
+  }
+}
+
+.search-form__error {
+  position: absolute;
+  top: 1.25rem;
+  right: 6.25rem;
+  pointer-events: none;
+  color: hsl(0deg, 91%, 62%);
+  font-weight: 700;
+}
+
+.result {
+  display: grid;
+  grid-template-columns: 4.375rem 1fr;
+  grid-template-areas: "avatar person" "bio bio" "statistic statistic" "details details";
+  column-gap: 1.25rem;
+  row-gap: 1.5625rem;
+  border-radius: 0.9375rem;
+  padding: 1.875rem 1.5rem 3rem;
+}
+
+.result__avatar {
+  grid-area: avatar;
+  border-radius: 50%;
+  width: 4.375rem;
+  height: 4.375rem;
+}
+
+.result__username {
+  color: var(--blue);
+  text-decoration: none;
+}
+.result__username:hover,
+.result__username:active {
+  text-decoration: underline;
+}
+
+.result__person {
+  grid-area: person;
+}
+
+.result__name {
+  font-size: 1rem;
+}
+
+.result__bio {
+  grid-area: bio;
+}
+
+.result__statistic {
+  display: flex;
+  grid-area: statistic;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.1875rem;
+  text-align: center;
+}
+
+.result__category {
+  font-size: 0.75rem;
+}
+
+.result__number {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.result__statistic .result__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.result__details {
+  grid-area: details;
+}
+
+.result__details .result__item:not(:first-child) {
+  margin-top: 1rem;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+body {
+  background-color: var(--body-background-color);
+  color: var(--body-font-color);
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  body {
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
+  }
+}
+
+.header__home {
+  color: var(--header-logo-color);
+}
+.header__home:focus-visible,
+.header__home:focus {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .theme-switcher__text {
+    transition: color var(--primary-transition);
+  }
+}
+
+.theme-switcher__checkbox:hover + .theme-switcher__text,
+.theme-switcher__checkbox:active + .theme-switcher__text {
+  color: var(--theme-switcher-text-hover-color);
+}
+
+.theme-switcher__checkbox:focus + .theme-switcher__text,
+.theme-switcher__checkbox:focus-visible + .theme-switcher__text {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  .theme-switcher__icon {
+    transition: filter var(--primary-transition);
+  }
+}
+
+.search-form__input {
+  box-shadow: var(--primary-box-shadow);
+  background-color: var(--search-form-input-background-color);
+  color: var(--search-form-input-color);
+}
+.search-form__input:focus-visible,
+.search-form__input:focus {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .search-form__input {
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
+  }
+}
+
+.search-form__button:focus-visible,
+.search-form__button:focus {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+
+.result {
+  box-shadow: var(--primary-box-shadow);
+  background-color: var(--result-background-color);
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .result {
+    transition: background-color var(--primary-transition);
+  }
+}
+
+.result__name {
+  color: var(--result-name-color);
+}
+
+.result__username:focus-visible,
+.result__username:focus {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+
+.result__statistic {
+  background-color: var(--result-statistic-background-color);
+}
+@media screen and (prefers-reduced-motion: no-preference) {
+  .result__statistic {
+    transition: background-color var(--primary-transition);
+  }
+}
+
+.result__number {
+  color: var(--result-number-color);
+}
+
+.result__website-url {
+  color: var(--link-color);
+  text-decoration: none;
+}
+.result__website-url:hover,
+.result__website-url:active {
+  text-decoration: underline;
+}
+.result__website-url:focus-visible,
+.result__website-url:focus {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+
+.result__twitter {
+  color: var(--link-color);
+  text-decoration: none;
+}
+.result__twitter:hover,
+.result__twitter:active {
+  text-decoration: underline;
+}
+.result__twitter:focus-visible,
+.result__twitter:focus {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+
+.result__office {
+  color: var(--link-color);
+  text-decoration: none;
+}
+.result__office:hover,
+.result__office:active {
+  text-decoration: underline;
+}
+.result__office:focus-visible,
+.result__office:focus {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+
+.is-not-available {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.is-not-available:hover,
+.is-not-available:active {
+  text-decoration: none;
+}

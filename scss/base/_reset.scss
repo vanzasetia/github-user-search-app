@@ -1,0 +1,192 @@
+@use "../abstracts" as *;
+
+:root {
+  --blue: hsl(212, 100%, 50%);
+  --light-blue: hsl(217, 20%, 51%);
+  --dark-blue-100: hsl(217, 35%, 45%);
+  --dark-blue-200: hsl(222, 41%, 20%);
+  --very-dark-blue-100: hsl(217, 21%, 21%);
+  --very-dark-blue-200: hsl(220, 18%, 16%);
+  --very-dark-blue-300: hsl(220, 40%, 13%);
+  --very-light-blue: hsl(227, 100%, 98%);
+  --white: hsl(0, 0%, 100%);
+  --primary-box-shadow: 0 #{rem(16)} #{rem(30)} #{rem(-10)} rgba(70, 96, 187, 0.2);
+  --primary-transition: 250ms ease-in-out;
+
+  --header-logo-color: var(--very-dark-blue-200);
+  --link-color: var(--dark-blue-100);
+  --body-background-color: var(--very-light-blue);
+  --body-font-color: var(--dark-blue-100);
+  --result-background-color: var(--white);
+  --result-name-color: var(--very-dark-blue-100);
+  --result-statistic-background-color: var(--very-light-blue);
+  --result-number-color: var(--very-dark-blue-100);
+  --theme-switcher-text-hover-color: var(--very-dark-blue-200);
+  --search-form-input-background-color: var(--white);
+  --search-form-input-color: var(--very-dark-blue-200);
+  --focus-visible-outline-color: var(--very-dark-blue-300);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --header-logo-color: var(--white);
+    --link-color: var(--white);
+    --body-background-color: var(--very-dark-blue-300);
+    --body-font-color: var(--white);
+    --result-background-color: var(--dark-blue-200);
+    --result-name-color: var(--white);
+    --result-statistic-background-color: var(--very-dark-blue-300);
+    --result-number-color: var(--white);
+    --theme-switcher-text-hover-color: hsla(222, 44%, 70%);
+    --search-form-input-background-color: var(--dark-blue-200);
+    --search-form-input-color: var(--white);
+    --focus-visible-outline-color: var(--white);
+    --primary-box-shadow: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: -1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-delay: 0s !important;
+    transition-duration: 0s !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background-color: rgb(22, 95, 204);
+  color: rgb(242, 242, 242);
+}
+
+::-moz-selection {
+  background-color: rgb(22, 95, 204);
+  color: rgb(242, 242, 242);
+}
+
+/**
+ * Screen Reader Class
+ * 
+ * To hide content visually.
+ *
+ * For more information: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034
+ */
+.sr-only {
+  -webkit-clip-path: inset(50%) !important;
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+body {
+  padding: rem(30) rem(24);
+  font: #{rem(13)}/ 1.6 "Space Mono", monospace;
+}
+
+p {
+  font-size: 1em;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/** 
+ * Avoid overloading a user with 
+ * sound from a video that 
+ * autoplays when the page is loaded.
+ *
+ * Source: https://github.com/AllThingsSmitty/css-protips#hide-autoplay-videos-that-arent-muted
+ */
+video[autoplay]:not([muted]) {
+  display: none;
+}
+
+/**
+ * Set font-size on Form Elements for a 
+ * Better Mobile Experience
+ *
+ * To avoid mobile browsers (iOS Safari,
+ * et al.) from zooming in on HTML form 
+ * elements when a <select> drop-down is
+ * tapped, add font-size to the selector
+ * rule.
+ *
+ * Source: https://github.com/AllThingsSmitty/css-protips#set-font-size-on-form-elements-for-a-better-mobile-experience
+ */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  font-size: 1rem;
+}
+
+svg {
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.skip-content {
+  display: inline-block;
+  position: fixed;
+  top: 3rem;
+  left: 0;
+  transform: translateX(-200%);
+  z-index: 200;
+  background-color: rgb(250, 250, 250);
+  padding: 1em 2em;
+  font-size: 1.25rem;
+  text-decoration: 0.1em solid;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skip-content {
+    transition: transform 0.3s ease 0s;
+  }
+}
+
+.skip-content:focus,
+.skip-content:focus-visible {
+  transform: translate(0);
+  outline: 0.2em dashed var(--very-dark-blue-200);
+  outline-offset: 0.25em;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .skip-content:focus,
+  .skip-content:focus-visible {
+    outline-color: var(--white);
+  }
+}
+
+.hidden {
+  visibility: hidden;
+  width: 0.0625rem;
+  height: 0;
+}

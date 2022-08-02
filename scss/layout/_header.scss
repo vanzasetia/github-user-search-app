@@ -1,0 +1,6 @@
+@use "../abstracts" as *;
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+}

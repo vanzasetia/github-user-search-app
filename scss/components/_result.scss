@@ -1,0 +1,75 @@
+@use "../abstracts" as *;
+
+.result {
+  display: grid;
+  grid-template-columns: rem(70) 1fr;
+  grid-template-areas:
+    "avatar person"
+    "bio bio"
+    "statistic statistic"
+    "details details";
+  column-gap: rem(20);
+  row-gap: rem(25);
+  border-radius: rem(15);
+  padding: rem(30) rem(24) rem(48);
+}
+
+.result__avatar {
+  grid-area: avatar;
+  border-radius: 50%;
+  width: rem(70);
+  height: rem(70);
+}
+
+.result__username {
+  color: var(--blue);
+  text-decoration: none;
+
+  @include on-event {
+    text-decoration: underline;
+  }
+}
+
+.result__person {
+  grid-area: person;
+}
+
+.result__name {
+  font-size: rem(16);
+}
+
+.result__bio {
+  grid-area: bio;
+}
+
+.result__statistic {
+  display: flex;
+  grid-area: statistic;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(19);
+  text-align: center;
+}
+
+.result__category {
+  font-size: rem(12);
+}
+
+.result__number {
+  margin-top: rem(8);
+  font-weight: 700;
+  font-size: rem(16);
+}
+
+.result__statistic .result__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.result__details {
+  grid-area: details;
+}
+
+.result__details .result__item:not(:first-child) {
+  margin-top: rem(16);
+}

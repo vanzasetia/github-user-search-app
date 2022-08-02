@@ -1,0 +1,118 @@
+@use "../abstracts" as *;
+
+@mixin link-styling {
+  color: var(--link-color);
+  text-decoration: none;
+
+  @include on-event {
+    text-decoration: underline;
+  }
+}
+
+body {
+  background-color: var(--body-background-color);
+  color: var(--body-font-color);
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
+  }
+}
+
+.header__home {
+  color: var(--header-logo-color);
+  @include focus-visible(var(--focus-visible-outline-color));
+}
+
+.theme-switcher__text {
+  @include prefers-motion {
+    transition: color var(--primary-transition);
+  }
+}
+
+.theme-switcher__checkbox:hover + .theme-switcher__text,
+.theme-switcher__checkbox:active + .theme-switcher__text {
+  color: var(--theme-switcher-text-hover-color);
+}
+
+.theme-switcher__checkbox:focus + .theme-switcher__text,
+.theme-switcher__checkbox:focus-visible + .theme-switcher__text {
+  outline: rem(3) dotted var(--focus-visible-outline-color);
+  outline-offset: rem(5);
+}
+
+.theme-switcher__icon {
+  @include prefers-motion {
+    transition: filter var(--primary-transition);
+  }
+}
+
+.search-form__input {
+  box-shadow: var(--primary-box-shadow);
+  background-color: var(--search-form-input-background-color);
+  color: var(--search-form-input-color);
+
+  @include focus-visible(var(--focus-visible-outline-color));
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
+  }
+}
+
+.search-form__button {
+  @include focus-visible(var(--focus-visible-outline-color));
+}
+
+.result {
+  box-shadow: var(--primary-box-shadow);
+  background-color: var(--result-background-color);
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition);
+  }
+}
+
+.result__name {
+  color: var(--result-name-color);
+}
+
+.result__username {
+  @include focus-visible(var(--focus-visible-outline-color));
+}
+
+.result__statistic {
+  background-color: var(--result-statistic-background-color);
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition);
+  }
+}
+
+.result__number {
+  color: var(--result-number-color);
+}
+
+.result__website-url {
+  @include link-styling();
+  @include focus-visible(var(--focus-visible-outline-color));
+}
+
+.result__twitter {
+  @include link-styling();
+  @include focus-visible(var(--focus-visible-outline-color));
+}
+
+.result__office {
+  @include link-styling();
+  @include focus-visible(var(--focus-visible-outline-color));
+}
+
+.is-not-available {
+  opacity: 0.5;
+  cursor: not-allowed;
+
+  @include on-event {
+    text-decoration: none;
+  }
+}

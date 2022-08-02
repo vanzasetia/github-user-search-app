@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <title>GitHub user search app | Frontend Mentor</title>
+    <link rel="preconnect" href="https://api.github.com/" />
+    <link rel="dns-prefetch" href="https://api.github.com/" />
+    <script>
+      document.querySelector("html").removeAttribute("class");
+    </script>
+    <script src="/"></script>
+    <!-- 
+    Directly used the preloaded font family
+    to prevent producing warning messages in the console
+    -->
+    <!-- prettier-ignore -->
+    <style>@font-face{font-family:"Space Mono";font-style:normal;font-weight:700;font-display:swap;src:local("Space Mono"), local("Space Mono Bold"), local("SpaceMono Bold"), local("SpaceMono-Bold"), url("/fonts/SpaceMonoBold.woff2") format("woff2"), url("/fonts/SpaceMonoBold.woff") format("woff")}@font-face{font-family:"Space Mono";font-style:normal;font-weight:400;font-display:swap;src:local("Space Mono"), local("Space Mono Regular"), local("SpaceMono Regular"), local("SpaceMono-Regular"), url("/fonts/SpaceMonoRegular.woff2") format("woff2"), url("/fonts/SpaceMonoRegular.woff") format("woff")}</style>
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- Preload Font Family To Prevent Shifting Layout -->
+    <link
+      rel="preload"
+      href="/fonts/SpaceMonoBold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/SpaceMonoRegular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script src="/js/app.js" defer></script>
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link rel="icon" type="image/png" href="/images/frontendmentor.png" />
+    <link
+      rel="mask-icon"
+      href="/favicons/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="description"
+      content="In this project, I use the GitHub users API to pull profile data and display it. It's a great challenge for me to practice working with a 3rd-party API."
+    />
+    <meta name="url" content="https://officialdevfinder.netlify.app/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="GitHub user search app" />
+    <meta property="og:site_name" content="GitHub user search app" />
+    <meta
+      property="og:description"
+      content="In this project, I use the GitHub users API to pull profile data and display it. It's a great challenge for me to practice working with a 3rd-party API."
+    />
+    <meta property="og:url" content="https://officialdevfinder.netlify.app/" />
+    <meta
+      property="og:image"
+      content="https://officialdevfinder.netlify.app/design/desktop-design.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@vanzasetia" />
+    <meta name="twitter:creator" content="@vanzasetia" />
+    <meta name="google" content="nositelinkssearchbox" />
+    <meta name="google" content="notranslate" />
+    <link rel="canonical" href="https://officialdevfinder.netlify.app/" />
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link
+      rel="author"
+      href="https://officialdevfinder.netlify.app/humans.txt"
+    />
+  </head>
+  <body dir="ltr">
+    <noscript>
+      <p>Please enable JavaScript on your browser.</p>
+    </noscript>
+    <header class="header">
+      <a href="#main" class="skip-content">Skip to main content.</a>
+      <div class="container">
+        <a href="/" class="header__home">
+          <svg
+            class="header__logo"
+            width="126"
+            height="21"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <use href="/svg/sprite.svg#logo"></use>
+          </svg>
+          <span class="sr-only">devfinder - Home</span>
+        </a>
+        <div class="theme-switcher">
+          <input
+            type="checkbox"
+            name="theme-toggle"
+            id="theme-switcher"
+            class="theme-switcher__checkbox sr-only"
+            aria-labelledby="theme-switcher-label"
+          />
+          <label
+            for="theme-switcher"
+            class="theme-switcher__text"
+            aria-hidden="true"
+          >
+            dark
+            <svg
+              class="theme-switcher__icon"
+              width="20"
+              height="20"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <use href="/svg/sprite.svg#moon"></use>
+            </svg>
+          </label>
+          <span id="theme-switcher-label" class="sr-only">dark mode</span>
+        </div>
+      </div>
+    </header>
+    <main id="main" class="app">
+      <div class="container">
+        <form class="search-form" autocomplete="on">
+          <div role="search">
+            <label for="username-input" class="sr-only">
+              Search GitHub username
+            </label>
+            <input
+              type="search"
+              name="username"
+              id="username-input"
+              class="search-form__input"
+              placeholder=" "
+              required="required"
+              autocomplete="username"
+              aria-describedby="error"
+            />
+            <p class="search-form__placeholder" aria-hidden="true">
+              Search GitHub username...
+            </p>
+            <p id="error" class="search-form__error" aria-live="polite"></p>
+            <button class="search-form__button" type="submit">Search</button>
+          </div>
+        </form>
+        <div class="result">
+          <img
+            src="/images/octocat.jpg"
+            alt="@octocat"
+            class="result__avatar"
+            width="120"
+            height="120"
+          />
+          <div class="result__person">
+            <div class="result__wrapper">
+              <h1 class="result__name">The Octocat</h1>
+              <a href="https://github.com/octocat" class="result__username">
+                @octocat
+              </a>
+            </div>
+            <p class="result__join-date">
+              Joined
+              <time class="result__time" datetime="2011-01-25T18:44:36Z">
+                Jan 25 2011
+              </time>
+            </p>
+          </div>
+          <p class="result__bio is-not-available">This profile has no bio</p>
+          <ul class="result__statistic" role="list">
+            <li class="result__item">
+              <span class="result__category">Repos</span>
+              <span class="result__number">8</span>
+            </li>
+            <li class="result__item">
+              <span class="result__category">Followers</span>
+              <span class="result__number">3938</span>
+            </li>
+            <li class="result__item">
+              <span class="result__category">Following</span>
+              <span class="result__number">9</span>
+            </li>
+          </ul>
+          <ul class="result__details" role="list">
+            <li class="result__item result__item--row">
+              <svg
+                class="result__icon"
+                width="14"
+                height="20"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="/svg/sprite.svg#location"></use>
+              </svg>
+              <span class="sr-only">Location:</span>
+              <span class="result__location">San Francisco</span>
+            </li>
+            <li class="result__item">
+              <svg
+                class="result__icon"
+                width="20"
+                height="20"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="/svg/sprite.svg#link"></use>
+              </svg>
+              <span class="sr-only">Website:</span>
+              <a href="https://github.blog" class="result__website-url">
+                https://github.blog
+              </a>
+            </li>
+            <li class="result__item">
+              <svg
+                class="result__icon is-not-available"
+                width="20"
+                height="18"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="/svg/sprite.svg#twitter"></use>
+              </svg>
+              <span class="sr-only">Twitter:</span>
+              <span class="result__twitter is-not-available">
+                Not Available
+              </span>
+            </li>
+            <li class="result__item">
+              <svg
+                class="result__icon"
+                width="20"
+                height="20"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="/svg/sprite.svg#office"></use>
+              </svg>
+              <span class="sr-only">Office:</span>
+              <a href="https://github.com/github" class="result__office">
+                @github
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+    <!-- <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js");
+        });
+      }
+    </script> -->
+  </body>
+</html>

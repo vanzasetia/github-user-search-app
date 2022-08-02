@@ -1,0 +1,44 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devserver": "browser-sync start --server  --watch --port='8080' --no-inject-changes",
+    "watch:sass": "sass scss/main.scss css/style.css --watch --no-source-map",
+    "start": "npm-run-all --parallel devserver watch:sass",
+
+    "prettier": "prettier --write .",
+    "semistandard:js": "semistandard --fix js/app.js",
+    "sort:scss": "postcss ./scss/ --replace --config package.json",
+    "format": "npm-run-all sort:scss semistandard:js prettier",
+
+    "compile:sass": "sass scss/main.scss css/style.css --no-source-map",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.css --output css/style.css",
+    "compressed:css": "sass scss/main.scss css/style.min.css --style=compressed --no-source-map",
+    "ready": "npm-run-all compile:sass sort:scss semistandard:js prefix:css prettier compressed:css"
+  },
+  "postcss": {
+    "syntax": "postcss-scss",
+    "map": false,
+    "plugins": {
+      "css-declaration-sorter": {
+        "order": "concentric-css"
+      }
+    }
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.8",
+    "browser-sync": "^2.27.10",
+    "css-declaration-sorter": "^6.3.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.14",
+    "postcss-cli": "^10.0.0",
+    "postcss-scss": "^4.0.4",
+    "prettier": "^2.7.1",
+    "sass": "^1.54.0",
+    "semistandard": "^16.0.1"
+  }
+}

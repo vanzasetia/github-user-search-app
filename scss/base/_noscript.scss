@@ -1,0 +1,9 @@
+/*
+ * Make sure when the user disable
+ * JavaScript the content is hidden.
+ */
+.no-js header,
+.no-js main,
+.no-js footer {
+  display: none !important;
+}
