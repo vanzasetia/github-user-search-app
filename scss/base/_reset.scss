@@ -206,15 +206,8 @@ svg {
 .skip-content:focus,
 .skip-content:focus-visible {
   transform: translate(0);
-  outline: 0.2em dashed var(--very-dark-blue-200);
+  outline: 0.2em dashed var(--focus-visible-outline-color);
   outline-offset: 0.25em;
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  .skip-content:focus,
-  .skip-content:focus-visible {
-    outline-color: var(--white);
-  }
 }
 
 .hidden {

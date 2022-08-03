@@ -3,8 +3,8 @@
 \*------------------------------------*/
 /*  Modern CSS reset - https://piccalil.li/blog/a-modern-css-reset/ */
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
+ul[role=list],
+ol[role=list] {
   list-style: none;
 }
 
@@ -110,7 +110,6 @@ textarea {
   --very-dark-blue-300: hsl(220, 40%, 13%);
   --very-light-blue: hsl(227, 100%, 98%);
   --white: hsl(0, 0%, 100%);
-  --primary-box-shadow: 0 1rem 1.875rem -0.625rem rgba(70, 96, 187, 0.2);
   --primary-transition: 250ms ease-in-out;
   --header-logo-color: var(--very-dark-blue-200);
   --link-color: var(--dark-blue-100);
@@ -124,6 +123,7 @@ textarea {
   --search-form-input-background-color: var(--white);
   --search-form-input-color: var(--very-dark-blue-200);
   --focus-visible-outline-color: var(--very-dark-blue-300);
+  --primary-box-shadow: 0 1rem 1.875rem -0.625rem rgba(70, 96, 187, 0.2);
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -143,10 +143,42 @@ textarea {
     --primary-box-shadow: none;
   }
 }
+.is-light {
+  --header-logo-color: var(--very-dark-blue-200);
+  --link-color: var(--dark-blue-100);
+  --body-background-color: var(--very-light-blue);
+  --body-font-color: var(--dark-blue-100);
+  --result-background-color: var(--white);
+  --result-name-color: var(--very-dark-blue-100);
+  --result-statistic-background-color: var(--very-light-blue);
+  --result-number-color: var(--very-dark-blue-100);
+  --theme-switcher-text-hover-color: var(--very-dark-blue-200);
+  --search-form-input-background-color: var(--white);
+  --search-form-input-color: var(--very-dark-blue-200);
+  --focus-visible-outline-color: var(--very-dark-blue-300);
+  --primary-box-shadow: 0 1rem 1.875rem -0.625rem rgba(70, 96, 187, 0.2);
+}
+
+.is-dark {
+  --header-logo-color: var(--white);
+  --link-color: var(--white);
+  --body-background-color: var(--very-dark-blue-300);
+  --body-font-color: var(--white);
+  --result-background-color: var(--dark-blue-200);
+  --result-name-color: var(--white);
+  --result-statistic-background-color: var(--very-dark-blue-300);
+  --result-number-color: var(--white);
+  --theme-switcher-text-hover-color: hsla(222, 44%, 70%);
+  --search-form-input-background-color: var(--dark-blue-200);
+  --search-form-input-color: var(--white);
+  --focus-visible-outline-color: var(--white);
+  --primary-box-shadow: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
-  *::before,
-  *::after {
+*::before,
+*::after {
     animation-duration: 1ms !important;
     animation-delay: -1ms !important;
     animation-iteration-count: 1 !important;
@@ -236,8 +268,8 @@ video[autoplay]:not([muted]) {
  *
  * Source: https://github.com/AllThingsSmitty/css-protips#set-font-size-on-form-elements-for-a-better-mobile-experience
  */
-input[type="text"],
-input[type="number"],
+input[type=text],
+input[type=number],
 select,
 textarea {
   font-size: 1rem;
@@ -270,16 +302,10 @@ svg {
 .skip-content:focus,
 .skip-content:focus-visible {
   transform: translate(0);
-  outline: 0.2em dashed var(--very-dark-blue-200);
+  outline: 0.2em dashed var(--focus-visible-outline-color);
   outline-offset: 0.25em;
 }
 
-@media screen and (prefers-color-scheme: dark) {
-  .skip-content:focus,
-  .skip-content:focus-visible {
-    outline-color: var(--white);
-  }
-}
 .hidden {
   visibility: hidden;
   width: 0.0625rem;
@@ -357,8 +383,7 @@ svg {
   color: var(--white);
   font-weight: 700;
 }
-.search-form__button:hover,
-.search-form__button:active {
+.search-form__button:hover, .search-form__button:active {
   background-color: hsl(212deg, 100%, 69%);
 }
 @media screen and (prefers-reduced-motion: no-preference) {
@@ -397,8 +422,7 @@ svg {
   color: var(--blue);
   text-decoration: none;
 }
-.result__username:hover,
-.result__username:active {
+.result__username:hover, .result__username:active {
   text-decoration: underline;
 }
 
@@ -457,16 +481,14 @@ body {
 }
 @media screen and (prefers-reduced-motion: no-preference) {
   body {
-    transition: background-color var(--primary-transition),
-      color var(--primary-transition);
+    transition: background-color var(--primary-transition), color var(--primary-transition);
   }
 }
 
 .header__home {
   color: var(--header-logo-color);
 }
-.header__home:focus-visible,
-.header__home:focus {
+.header__home:focus-visible, .header__home:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -499,20 +521,17 @@ body {
   background-color: var(--search-form-input-background-color);
   color: var(--search-form-input-color);
 }
-.search-form__input:focus-visible,
-.search-form__input:focus {
+.search-form__input:focus-visible, .search-form__input:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
 @media screen and (prefers-reduced-motion: no-preference) {
   .search-form__input {
-    transition: background-color var(--primary-transition),
-      color var(--primary-transition);
+    transition: background-color var(--primary-transition), color var(--primary-transition);
   }
 }
 
-.search-form__button:focus-visible,
-.search-form__button:focus {
+.search-form__button:focus-visible, .search-form__button:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -531,8 +550,7 @@ body {
   color: var(--result-name-color);
 }
 
-.result__username:focus-visible,
-.result__username:focus {
+.result__username:focus-visible, .result__username:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -554,12 +572,10 @@ body {
   color: var(--link-color);
   text-decoration: none;
 }
-.result__website-url:hover,
-.result__website-url:active {
+.result__website-url:hover, .result__website-url:active {
   text-decoration: underline;
 }
-.result__website-url:focus-visible,
-.result__website-url:focus {
+.result__website-url:focus-visible, .result__website-url:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -568,12 +584,10 @@ body {
   color: var(--link-color);
   text-decoration: none;
 }
-.result__twitter:hover,
-.result__twitter:active {
+.result__twitter:hover, .result__twitter:active {
   text-decoration: underline;
 }
-.result__twitter:focus-visible,
-.result__twitter:focus {
+.result__twitter:focus-visible, .result__twitter:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -582,12 +596,10 @@ body {
   color: var(--link-color);
   text-decoration: none;
 }
-.result__office:hover,
-.result__office:active {
+.result__office:hover, .result__office:active {
   text-decoration: underline;
 }
-.result__office:focus-visible,
-.result__office:focus {
+.result__office:focus-visible, .result__office:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -596,7 +608,6 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.is-not-available:hover,
-.is-not-available:active {
+.is-not-available:hover, .is-not-available:active {
   text-decoration: none;
 }
