@@ -32,7 +32,7 @@
         localStorage.setItem("root-class", "is-light");
       } else {
         setThemeSwitcherStateForDarkMode();
-        localStorage.clear();
+        clearUsersColorSchemePreference();
       }
     } else {
       root.classList.toggle("is-dark");
@@ -41,9 +41,14 @@
         localStorage.setItem("root-class", "is-dark");
       } else {
         setThemeSwitcherStateForLightMode();
-        localStorage.clear();
+        clearUsersColorSchemePreference();
       }
     }
+  };
+
+  const clearUsersColorSchemePreference = () => {
+    root.classList.remove("is-light", "is-dark");
+    localStorage.clear();
   };
 
   const setThemeSwitcherState = () => {
@@ -73,8 +78,7 @@
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", ({ matches }) => {
       const isSystemThemeDark = matches;
-      root.classList.remove("is-light", "is-dark");
-      localStorage.clear();
+      clearUsersColorSchemePreference();
 
       if (isSystemThemeDark) {
         setThemeSwitcherStateForDarkMode();
