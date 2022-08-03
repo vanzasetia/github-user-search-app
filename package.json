@@ -27,6 +27,9 @@
       }
     }
   },
+  "semistandard": {
+    "globals": [ "localStorage", "matchMedia" ]
+  },
   "author": "",
   "license": "MIT",
   "devDependencies": {
