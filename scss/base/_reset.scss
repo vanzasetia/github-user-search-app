@@ -10,7 +10,6 @@
   --very-dark-blue-300: hsl(220, 40%, 13%);
   --very-light-blue: hsl(227, 100%, 98%);
   --white: hsl(0, 0%, 100%);
-  --primary-box-shadow: 0 #{rem(16)} #{rem(30)} #{rem(-10)} rgba(70, 96, 187, 0.2);
   --primary-transition: 250ms ease-in-out;
 
   --header-logo-color: var(--very-dark-blue-200);
@@ -25,6 +24,7 @@
   --search-form-input-background-color: var(--white);
   --search-form-input-color: var(--very-dark-blue-200);
   --focus-visible-outline-color: var(--very-dark-blue-300);
+  --primary-box-shadow: 0 #{rem(16)} #{rem(30)} #{rem(-10)} rgba(70, 96, 187, 0.2);
 }
 
 @media screen and (prefers-color-scheme: dark) {
