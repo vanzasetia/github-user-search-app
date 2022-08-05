@@ -1,5 +1,10 @@
 @use "../abstracts" as *;
 
+.header__home {
+  color: var(--header-logo-color);
+  @include focus-visible(var(--focus-visible-outline-color));
+}
+
 .header .container {
   display: flex;
   justify-content: space-between;

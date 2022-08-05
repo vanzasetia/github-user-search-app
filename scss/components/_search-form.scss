@@ -10,14 +10,24 @@ $-placeholder-and-error-input-top-position: rem(20);
 
 .search-form__input {
   display: block;
+  box-shadow: var(--primary-box-shadow);
   border: none;
   border-radius: rem(15);
   background: url("../svg/icon-search.svg") no-repeat top rem(20) left #{rem(16)}/#{rem(
       20
     )};
+  background-color: var(--search-form-input-background-color);
   padding: rem(18) rem(98) rem(18) rem(45);
   width: 100%;
   height: rem(60);
+  color: var(--search-form-input-color);
+
+  @include focus-visible(var(--focus-visible-outline-color));
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
+  }
 }
 
 .search-form__placeholder {
@@ -48,6 +58,8 @@ $-placeholder-and-error-input-top-position: rem(20);
   padding: rem(13) rem(18);
   color: var(--white);
   font-weight: 700;
+
+  @include focus-visible(var(--focus-visible-outline-color));
 
   @include on-event {
     background-color: hsl(212, 100%, 69%);

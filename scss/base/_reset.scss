@@ -134,8 +134,15 @@ html {
 }
 
 body {
+  background-color: var(--body-background-color);
   padding: rem(30) rem(24);
+  color: var(--body-font-color);
   font: #{rem(13)}/ 1.6 "Space Mono", monospace;
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
+  }
 }
 
 p {

@@ -1,5 +1,14 @@
 @use "../abstracts" as *;
 
+@mixin link-styling {
+  color: var(--link-color);
+  text-decoration: none;
+
+  @include on-event {
+    text-decoration: underline;
+  }
+}
+
 .result {
   display: grid;
   grid-template-columns: rem(70) 1fr;
@@ -10,8 +19,14 @@
     "details details";
   column-gap: rem(20);
   row-gap: rem(25);
+  box-shadow: var(--primary-box-shadow);
   border-radius: rem(15);
+  background-color: var(--result-background-color);
   padding: rem(30) rem(24) rem(48);
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition);
+  }
 }
 
 .result__avatar {
@@ -24,6 +39,8 @@
 .result__username {
   color: var(--blue);
   text-decoration: none;
+
+  @include focus-visible(var(--focus-visible-outline-color));
 
   @include on-event {
     text-decoration: underline;
@@ -38,6 +55,7 @@
 }
 
 .result__name {
+  color: var(--result-name-color);
   font-size: rem(16);
 }
 
@@ -50,8 +68,13 @@
   grid-area: statistic;
   justify-content: space-between;
   align-items: center;
+  background-color: var(--result-statistic-background-color);
   padding: rem(19);
   text-align: center;
+
+  @include prefers-motion {
+    transition: background-color var(--primary-transition);
+  }
 }
 
 .result__category {
@@ -60,6 +83,7 @@
 
 .result__number {
   margin-top: rem(8);
+  color: var(--result-number-color);
   font-weight: 700;
   font-size: rem(16);
 }
@@ -75,4 +99,20 @@
 
 .result__details .result__item:not(:first-child) {
   margin-top: rem(16);
+}
+
+.result__link {
+  @include link-styling();
+  @include focus-visible(var(--focus-visible-outline-color));
+}
+
+.is-not-available {
+  opacity: 0.5;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.is-not-available .result__link {
+  cursor: inherit;
+  text-decoration: inherit;
 }
