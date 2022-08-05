@@ -93,17 +93,7 @@ body {
   color: var(--result-number-color);
 }
 
-.result__website-url {
-  @include link-styling();
-  @include focus-visible(var(--focus-visible-outline-color));
-}
-
-.result__twitter {
-  @include link-styling();
-  @include focus-visible(var(--focus-visible-outline-color));
-}
-
-.result__office {
+.result__link {
   @include link-styling();
   @include focus-visible(var(--focus-visible-outline-color));
 }
