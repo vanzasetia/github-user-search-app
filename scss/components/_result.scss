@@ -31,7 +31,10 @@
 }
 
 .result__person {
+  display: flex;
   grid-area: person;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .result__name {
