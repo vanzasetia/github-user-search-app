@@ -101,8 +101,10 @@ body {
 .is-not-available {
   opacity: 0.5;
   cursor: not-allowed;
+  text-decoration: none;
+}
 
-  @include on-event {
-    text-decoration: none;
-  }
+.is-not-available .result__link {
+  cursor: inherit;
+  text-decoration: inherit;
 }
