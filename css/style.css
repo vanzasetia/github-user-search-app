@@ -3,8 +3,8 @@
 \*------------------------------------*/
 /*  Modern CSS reset - https://piccalil.li/blog/a-modern-css-reset/ */
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role=list],
-ol[role=list] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 
@@ -177,8 +177,8 @@ textarea {
 
 @media (prefers-reduced-motion: reduce) {
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
     animation-duration: 1ms !important;
     animation-delay: -1ms !important;
     animation-iteration-count: 1 !important;
@@ -268,8 +268,8 @@ video[autoplay]:not([muted]) {
  *
  * Source: https://github.com/AllThingsSmitty/css-protips#set-font-size-on-form-elements-for-a-better-mobile-experience
  */
-input[type=text],
-input[type=number],
+input[type="text"],
+input[type="number"],
 select,
 textarea {
   font-size: 1rem;
@@ -340,7 +340,7 @@ svg {
 .search-form {
   position: relative;
   margin-top: 2.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .search-form__input {
@@ -383,7 +383,8 @@ svg {
   color: var(--white);
   font-weight: 700;
 }
-.search-form__button:hover, .search-form__button:active {
+.search-form__button:hover,
+.search-form__button:active {
   background-color: hsl(212deg, 100%, 69%);
 }
 @media screen and (prefers-reduced-motion: no-preference) {
@@ -394,8 +395,8 @@ svg {
 
 .search-form__error {
   position: absolute;
-  top: 1.25rem;
-  right: 6.25rem;
+  top: 4.0625rem;
+  right: 0;
   pointer-events: none;
   color: hsl(0deg, 91%, 62%);
   font-weight: 700;
@@ -422,12 +423,16 @@ svg {
   color: var(--blue);
   text-decoration: none;
 }
-.result__username:hover, .result__username:active {
+.result__username:hover,
+.result__username:active {
   text-decoration: underline;
 }
 
 .result__person {
   grid-area: person;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .result__name {
@@ -481,14 +486,16 @@ body {
 }
 @media screen and (prefers-reduced-motion: no-preference) {
   body {
-    transition: background-color var(--primary-transition), color var(--primary-transition);
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
   }
 }
 
 .header__home {
   color: var(--header-logo-color);
 }
-.header__home:focus-visible, .header__home:focus {
+.header__home:focus-visible,
+.header__home:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -521,17 +528,20 @@ body {
   background-color: var(--search-form-input-background-color);
   color: var(--search-form-input-color);
 }
-.search-form__input:focus-visible, .search-form__input:focus {
+.search-form__input:focus-visible,
+.search-form__input:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
 @media screen and (prefers-reduced-motion: no-preference) {
   .search-form__input {
-    transition: background-color var(--primary-transition), color var(--primary-transition);
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
   }
 }
 
-.search-form__button:focus-visible, .search-form__button:focus {
+.search-form__button:focus-visible,
+.search-form__button:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -550,7 +560,8 @@ body {
   color: var(--result-name-color);
 }
 
-.result__username:focus-visible, .result__username:focus {
+.result__username:focus-visible,
+.result__username:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -568,38 +579,16 @@ body {
   color: var(--result-number-color);
 }
 
-.result__website-url {
+.result__link {
   color: var(--link-color);
   text-decoration: none;
 }
-.result__website-url:hover, .result__website-url:active {
+.result__link:hover,
+.result__link:active {
   text-decoration: underline;
 }
-.result__website-url:focus-visible, .result__website-url:focus {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
-}
-
-.result__twitter {
-  color: var(--link-color);
-  text-decoration: none;
-}
-.result__twitter:hover, .result__twitter:active {
-  text-decoration: underline;
-}
-.result__twitter:focus-visible, .result__twitter:focus {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
-}
-
-.result__office {
-  color: var(--link-color);
-  text-decoration: none;
-}
-.result__office:hover, .result__office:active {
-  text-decoration: underline;
-}
-.result__office:focus-visible, .result__office:focus {
+.result__link:focus-visible,
+.result__link:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -607,7 +596,10 @@ body {
 .is-not-available {
   opacity: 0.5;
   cursor: not-allowed;
-}
-.is-not-available:hover, .is-not-available:active {
   text-decoration: none;
+}
+
+.is-not-available .result__link {
+  cursor: inherit;
+  text-decoration: inherit;
 }
