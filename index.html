@@ -146,8 +146,9 @@
       </div>
     </header>
     <main id="main" class="app">
+      <h1 class="sr-only">GitHub user app example</h1>
       <div class="container">
-        <form class="search-form" autocomplete="on">
+        <form class="search-form js-search-form" autocomplete="on">
           <div role="search">
             <label for="username-input" class="sr-only">
               Search GitHub username
@@ -156,7 +157,7 @@
               type="search"
               name="username"
               id="username-input"
-              class="search-form__input"
+              class="search-form__input js-search-input"
               placeholder=" "
               required="required"
               autocomplete="username"
@@ -165,7 +166,11 @@
             <p class="search-form__placeholder" aria-hidden="true">
               Search GitHub username...
             </p>
-            <p id="error" class="search-form__error" aria-live="polite"></p>
+            <p
+              id="error"
+              class="search-form__error js-alert-message"
+              aria-live="polite"
+            ></p>
             <button class="search-form__button" type="submit">Search</button>
           </div>
         </form>
@@ -173,41 +178,49 @@
           <img
             src="/images/octocat.jpg"
             alt="@octocat"
-            class="result__avatar"
+            class="result__avatar js-avatar"
             width="120"
             height="120"
           />
           <div class="result__person">
             <div class="result__wrapper">
-              <h1 class="result__name">The Octocat</h1>
-              <a href="https://github.com/octocat" class="result__username">
+              <h2 class="result__name js-name">The Octocat</h2>
+              <a
+                href="https://github.com/octocat"
+                class="result__username js-user-github-link"
+              >
                 @octocat
               </a>
             </div>
             <p class="result__join-date">
               Joined
-              <time class="result__time" datetime="2011-01-25T18:44:36Z">
-                Jan 25 2011
+              <time
+                class="result__time js-time"
+                datetime="2011-01-25T18:44:36Z"
+              >
+                25 Jan 2011
               </time>
             </p>
           </div>
-          <p class="result__bio is-not-available">This profile has no bio</p>
+          <p class="result__bio js-bio is-not-available">
+            This profile has no bio
+          </p>
           <ul class="result__statistic" role="list">
             <li class="result__item">
               <span class="result__category">Repos</span>
-              <span class="result__number">8</span>
+              <span class="result__number js-repository">8</span>
             </li>
             <li class="result__item">
               <span class="result__category">Followers</span>
-              <span class="result__number">3938</span>
+              <span class="result__number js-followers">3938</span>
             </li>
             <li class="result__item">
               <span class="result__category">Following</span>
-              <span class="result__number">9</span>
+              <span class="result__number js-following">9</span>
             </li>
           </ul>
           <ul class="result__details" role="list">
-            <li class="result__item result__item--row">
+            <li class="result__item js-location">
               <svg
                 class="result__icon"
                 width="14"
@@ -218,9 +231,9 @@
                 <use href="/svg/sprite.svg#location"></use>
               </svg>
               <span class="sr-only">Location:</span>
-              <span class="result__location">San Francisco</span>
+              <span class="result__location js-value">San Francisco</span>
             </li>
-            <li class="result__item">
+            <li class="result__item js-website">
               <svg
                 class="result__icon"
                 width="20"
@@ -231,13 +244,15 @@
                 <use href="/svg/sprite.svg#link"></use>
               </svg>
               <span class="sr-only">Website:</span>
-              <a href="https://github.blog" class="result__website-url">
-                https://github.blog
-              </a>
+              <span class="js-value">
+                <a href="https://github.blog" class="result__link">
+                  https://github.blog
+                </a>
+              </span>
             </li>
-            <li class="result__item">
+            <li class="result__item js-twitter is-not-available">
               <svg
-                class="result__icon is-not-available"
+                class="result__icon"
                 width="20"
                 height="18"
                 aria-hidden="true"
@@ -246,11 +261,11 @@
                 <use href="/svg/sprite.svg#twitter"></use>
               </svg>
               <span class="sr-only">Twitter:</span>
-              <span class="result__twitter is-not-available">
-                Not Available
+              <span class="js-value">
+                <span class="result__link"> Not Available </span>
               </span>
             </li>
-            <li class="result__item">
+            <li class="result__item js-office">
               <svg
                 class="result__icon"
                 width="20"
@@ -261,9 +276,11 @@
                 <use href="/svg/sprite.svg#office"></use>
               </svg>
               <span class="sr-only">Office:</span>
-              <a href="https://github.com/github" class="result__office">
-                @github
-              </a>
+              <span class="js-value">
+                <a href="https://github.com/github" class="result__link">
+                  @github
+                </a>
+              </span>
             </li>
           </ul>
         </div>
