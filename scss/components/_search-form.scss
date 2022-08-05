@@ -5,7 +5,7 @@ $-placeholder-and-error-input-top-position: rem(20);
 .search-form {
   position: relative;
   margin-top: rem(36);
-  margin-bottom: rem(16);
+  margin-bottom: rem(32);
 }
 
 .search-form__input {
@@ -60,8 +60,8 @@ $-placeholder-and-error-input-top-position: rem(20);
 
 .search-form__error {
   position: absolute;
-  top: $-placeholder-and-error-input-top-position;
-  right: rem(100);
+  top: rem(65);
+  right: 0;
   pointer-events: none;
   color: hsl(0, 91%, 62%);
   font-weight: 700;
