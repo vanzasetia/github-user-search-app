@@ -134,6 +134,9 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: var(--body-background-color);
   padding: rem(30) rem(24);
   color: var(--body-font-color);
@@ -142,6 +145,15 @@ body {
   @include prefers-motion {
     transition: background-color var(--primary-transition),
       color var(--primary-transition);
+  }
+
+  @include breakpoint-up("tiny") {
+    padding: rem(40);
+    font-size: rem(15);
+  }
+
+  @include breakpoint-up("very-small") {
+    padding: rem(60);
   }
 }
 

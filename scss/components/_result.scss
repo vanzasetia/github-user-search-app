@@ -22,10 +22,28 @@
   box-shadow: var(--primary-box-shadow);
   border-radius: rem(15);
   background-color: var(--result-background-color);
-  padding: rem(30) rem(24) rem(48);
+  padding: rem(32) rem(24);
 
   @include prefers-motion {
     transition: background-color var(--primary-transition);
+  }
+
+  @include breakpoint-up("tiny") {
+    grid-template-columns: rem(120) 1fr;
+    column-gap: rem(40);
+    row-gap: rem(30);
+    padding: rem(40);
+  }
+
+  @include breakpoint-up("very-small") {
+    grid-template-rows: repeat(auto-fill, minmax(#{rem(60), 1fr}));
+    grid-template-columns: rem(120) repeat(2, 1fr);
+    grid-template-areas:
+      "avatar person person"
+      "avatar bio bio"
+      ". statistic statistic"
+      ". details details";
+    align-items: flex-start;
   }
 }
 
@@ -34,6 +52,32 @@
   border-radius: 50%;
   width: rem(70);
   height: rem(70);
+
+  @include breakpoint-up("tiny") {
+    width: rem(120);
+    height: rem(120);
+  }
+}
+
+.result__person {
+  display: flex;
+  grid-area: person;
+  flex-direction: column;
+  justify-content: center;
+
+  @include breakpoint-up("very-small") {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.result__name {
+  color: var(--result-name-color);
+  font-size: rem(16);
+
+  @include breakpoint-up("tiny") {
+    font-size: rem(26);
+  }
 }
 
 .result__username {
@@ -47,18 +91,6 @@
   }
 }
 
-.result__person {
-  display: flex;
-  grid-area: person;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.result__name {
-  color: var(--result-name-color);
-  font-size: rem(16);
-}
-
 .result__bio {
   grid-area: bio;
 }
@@ -68,6 +100,7 @@
   grid-area: statistic;
   justify-content: space-between;
   align-items: center;
+  border-radius: rem(10);
   background-color: var(--result-statistic-background-color);
   padding: rem(19);
   text-align: center;
@@ -75,10 +108,19 @@
   @include prefers-motion {
     transition: background-color var(--primary-transition);
   }
+
+  @include breakpoint-up("tiny") {
+    padding: rem(16) rem(96) rem(16) rem(32);
+    text-align: left;
+  }
 }
 
 .result__category {
   font-size: rem(12);
+
+  @include breakpoint-up("tiny") {
+    font-size: rem(13);
+  }
 }
 
 .result__number {
@@ -86,6 +128,10 @@
   color: var(--result-number-color);
   font-weight: 700;
   font-size: rem(16);
+
+  @include breakpoint-up("tiny") {
+    font-size: rem(22);
+  }
 }
 
 .result__statistic .result__item {
@@ -95,6 +141,11 @@
 
 .result__details {
   grid-area: details;
+
+  @include breakpoint-up("tiny") {
+    column-gap: rem(65);
+    column-count: 2;
+  }
 }
 
 .result__details .result__item:not(:first-child) {
@@ -102,6 +153,8 @@
 }
 
 .result__link {
+  word-break: break-all;
+
   @include link-styling();
   @include focus-visible(var(--focus-visible-outline-color));
 }

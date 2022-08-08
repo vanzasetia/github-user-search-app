@@ -1,11 +1,14 @@
 @use "../abstracts" as *;
 
-$-placeholder-and-error-input-top-position: rem(20);
-
 .search-form {
   position: relative;
   margin-top: rem(36);
   margin-bottom: rem(32);
+
+  @include breakpoint-up("tiny") {
+    margin-top: rem(42);
+    margin-bottom: rem(38);
+  }
 }
 
 .search-form__input {
@@ -28,22 +31,38 @@ $-placeholder-and-error-input-top-position: rem(20);
     transition: background-color var(--primary-transition),
       color var(--primary-transition);
   }
+
+  @include breakpoint-up("tiny") {
+    background-position: top rem(23) left rem(32);
+    background-size: rem(24);
+    padding: rem(22) rem(126) rem(22) rem(80);
+    height: rem(70);
+  }
 }
 
 .search-form__placeholder {
   position: absolute;
-  top: $-placeholder-and-error-input-top-position;
+  top: rem(20);
   left: rem(45);
   pointer-events: none;
 
   @include prefers-motion {
     transition: top var(--primary-transition), left var(--primary-transition);
   }
+
+  @include breakpoint-up("tiny") {
+    top: rem(22);
+    left: rem(80);
+  }
 }
 
 .search-form__input:not(:placeholder-shown) ~ .search-form__placeholder {
   top: rem(-25);
   left: rem(35);
+
+  @include breakpoint-up("tiny") {
+    top: rem(-30);
+  }
 }
 
 .search-form__button {
@@ -68,6 +87,11 @@ $-placeholder-and-error-input-top-position: rem(20);
   @include prefers-motion {
     transition: background-color var(--primary-transition);
   }
+
+  @include breakpoint-up("tiny") {
+    padding: rem(14) rem(24);
+    font-size: rem(16);
+  }
 }
 
 .search-form__error {
@@ -77,4 +101,8 @@ $-placeholder-and-error-input-top-position: rem(20);
   pointer-events: none;
   color: hsl(0, 91%, 62%);
   font-weight: 700;
+
+  @include breakpoint-up("tiny") {
+    top: rem(74);
+  }
 }
