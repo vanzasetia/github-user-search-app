@@ -37,6 +37,7 @@
     background-size: rem(24);
     padding: rem(22) rem(126) rem(22) rem(80);
     height: rem(70);
+    font-size: rem(18);
   }
 }
 
@@ -53,6 +54,7 @@
   @include breakpoint-up("tiny") {
     top: rem(22);
     left: rem(80);
+    font-size: rem(18);
   }
 }
 
