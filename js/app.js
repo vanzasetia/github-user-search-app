@@ -308,15 +308,17 @@
         avatar_url: avatar,
         name,
         login: username,
+        html_url: githubProfileURL,
+        created_at: joinDate,
+        bio,
         public_repos: publicRepositories,
         followers,
         following,
-        html_url: githubProfileURL,
         location,
+        blog,
         twitter_username: twitter,
         company
       } = await data;
-      const { bio, blog, created_at: joinDate } = await data;
       showAvatar(avatar, username);
       showName(name);
       showUserName(username, githubProfileURL);
