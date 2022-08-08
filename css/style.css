@@ -3,8 +3,8 @@
 \*------------------------------------*/
 /*  Modern CSS reset - https://piccalil.li/blog/a-modern-css-reset/ */
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role=list],
-ol[role=list] {
+ul[role="list"],
+ol[role="list"] {
   list-style: none;
 }
 
@@ -22,6 +22,7 @@ body {
 
 /* A elements that don't have a class get default styles */
 a:not([class]) {
+  -webkit-text-decoration-skip: ink;
   text-decoration-skip-ink: auto;
 }
 
@@ -111,6 +112,55 @@ textarea {
   --very-light-blue: hsl(227, 100%, 98%);
   --white: hsl(0, 0%, 100%);
   --primary-transition: 250ms ease-in-out;
+  --header-logo-color: var(--very-dark-blue-200);
+  --link-color: var(--dark-blue-100);
+  --body-background-color: var(--very-light-blue);
+  --body-font-color: var(--dark-blue-100);
+  --result-background-color: var(--white);
+  --result-name-color: var(--very-dark-blue-100);
+  --result-statistic-background-color: var(--very-light-blue);
+  --result-number-color: var(--very-dark-blue-100);
+  --theme-switcher-text-hover-color: var(--very-dark-blue-200);
+  --search-form-input-background-color: var(--white);
+  --search-form-input-color: var(--very-dark-blue-200);
+  --focus-visible-outline-color: var(--very-dark-blue-300);
+  --primary-box-shadow: 0 1rem 1.875rem -0.625rem rgba(70, 96, 187, 0.2);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --header-logo-color: var(--white);
+    --link-color: var(--white);
+    --body-background-color: var(--very-dark-blue-300);
+    --body-font-color: var(--white);
+    --result-background-color: var(--dark-blue-200);
+    --result-name-color: var(--white);
+    --result-statistic-background-color: var(--very-dark-blue-300);
+    --result-number-color: var(--white);
+    --theme-switcher-text-hover-color: hsla(222, 44%, 70%);
+    --search-form-input-background-color: var(--dark-blue-200);
+    --search-form-input-color: var(--white);
+    --focus-visible-outline-color: var(--white);
+    --primary-box-shadow: none;
+  }
+}
+.is-light {
+  --header-logo-color: var(--very-dark-blue-200);
+  --link-color: var(--dark-blue-100);
+  --body-background-color: var(--very-light-blue);
+  --body-font-color: var(--dark-blue-100);
+  --result-background-color: var(--white);
+  --result-name-color: var(--very-dark-blue-100);
+  --result-statistic-background-color: var(--very-light-blue);
+  --result-number-color: var(--very-dark-blue-100);
+  --theme-switcher-text-hover-color: var(--very-dark-blue-200);
+  --search-form-input-background-color: var(--white);
+  --search-form-input-color: var(--very-dark-blue-200);
+  --focus-visible-outline-color: var(--very-dark-blue-300);
+  --primary-box-shadow: 0 1rem 1.875rem -0.625rem rgba(70, 96, 187, 0.2);
+}
+
+.is-dark {
   --header-logo-color: var(--white);
   --link-color: var(--white);
   --body-background-color: var(--very-dark-blue-300);
@@ -128,10 +178,13 @@ textarea {
 
 @media (prefers-reduced-motion: reduce) {
   *,
-*::before,
-*::after {
+  *::before,
+  *::after {
+    -webkit-animation-duration: 1ms !important;
     animation-duration: 1ms !important;
+    -webkit-animation-delay: -1ms !important;
     animation-delay: -1ms !important;
+    -webkit-animation-iteration-count: 1 !important;
     animation-iteration-count: 1 !important;
     transition-delay: 0s !important;
     transition-duration: 0s !important;
@@ -149,6 +202,11 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+::-moz-selection {
+  background-color: rgb(22, 95, 204);
+  color: rgb(242, 242, 242);
 }
 
 ::selection {
@@ -192,7 +250,8 @@ body {
 }
 @media screen and (prefers-reduced-motion: no-preference) {
   body {
-    transition: background-color var(--primary-transition), color var(--primary-transition);
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
   }
 }
 @media screen and (min-width: 37.5em) {
@@ -240,8 +299,8 @@ video[autoplay]:not([muted]) {
  *
  * Source: https://github.com/AllThingsSmitty/css-protips#set-font-size-on-form-elements-for-a-better-mobile-experience
  */
-input[type=text],
-input[type=number],
+input[type="text"],
+input[type="number"],
 select,
 textarea {
   font-size: 1rem;
@@ -263,6 +322,7 @@ svg {
   background-color: rgb(250, 250, 250);
   padding: 1em 2em;
   font-size: 1.25rem;
+  -webkit-text-decoration: 0.1em solid;
   text-decoration: 0.1em solid;
 }
 
@@ -366,13 +426,15 @@ svg {
   height: 3.75rem;
   color: var(--search-form-input-color);
 }
-.search-form__input:focus-visible, .search-form__input:focus {
+.search-form__input:focus-visible,
+.search-form__input:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
 @media screen and (prefers-reduced-motion: no-preference) {
   .search-form__input {
-    transition: background-color var(--primary-transition), color var(--primary-transition);
+    transition: background-color var(--primary-transition),
+      color var(--primary-transition);
   }
 }
 @media screen and (min-width: 37.5em) {
@@ -404,11 +466,19 @@ svg {
   }
 }
 
+.search-form__input:not(:-moz-placeholder-shown) ~ .search-form__placeholder {
+  top: -1.5625rem;
+  left: 2.1875rem;
+}
+
 .search-form__input:not(:placeholder-shown) ~ .search-form__placeholder {
   top: -1.5625rem;
   left: 2.1875rem;
 }
 @media screen and (min-width: 37.5em) {
+  .search-form__input:not(:-moz-placeholder-shown) ~ .search-form__placeholder {
+    top: -1.875rem;
+  }
   .search-form__input:not(:placeholder-shown) ~ .search-form__placeholder {
     top: -1.875rem;
   }
@@ -427,11 +497,13 @@ svg {
   color: var(--white);
   font-weight: 700;
 }
-.search-form__button:focus-visible, .search-form__button:focus {
+.search-form__button:focus-visible,
+.search-form__button:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
-.search-form__button:hover, .search-form__button:active {
+.search-form__button:hover,
+.search-form__button:active {
   background-color: hsl(212deg, 100%, 69%);
 }
 @media screen and (prefers-reduced-motion: no-preference) {
@@ -464,6 +536,7 @@ svg {
   display: grid;
   grid-template-columns: 4.375rem 1fr;
   grid-template-areas: "avatar person" "bio bio" "statistic statistic" "details details";
+  -moz-column-gap: 1.25rem;
   column-gap: 1.25rem;
   row-gap: 1.5625rem;
   box-shadow: var(--primary-box-shadow);
@@ -479,6 +552,7 @@ svg {
 @media screen and (min-width: 37.5em) {
   .result {
     grid-template-columns: 7.5rem 1fr;
+    -moz-column-gap: 2.5rem;
     column-gap: 2.5rem;
     row-gap: 1.875rem;
     padding: 2.5rem;
@@ -534,11 +608,13 @@ svg {
   color: var(--blue);
   text-decoration: none;
 }
-.result__username:focus-visible, .result__username:focus {
+.result__username:focus-visible,
+.result__username:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
-.result__username:hover, .result__username:active {
+.result__username:hover,
+.result__username:active {
   text-decoration: underline;
 }
 
@@ -599,7 +675,9 @@ svg {
 }
 @media screen and (min-width: 37.5em) {
   .result__details {
+    -moz-column-gap: 4.0625rem;
     column-gap: 4.0625rem;
+    -moz-column-count: 2;
     column-count: 2;
   }
 }
@@ -613,10 +691,12 @@ svg {
   color: var(--link-color);
   text-decoration: none;
 }
-.result__link:hover, .result__link:active {
+.result__link:hover,
+.result__link:active {
   text-decoration: underline;
 }
-.result__link:focus-visible, .result__link:focus {
+.result__link:focus-visible,
+.result__link:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
@@ -635,7 +715,8 @@ svg {
 .header__home {
   color: var(--header-logo-color);
 }
-.header__home:focus-visible, .header__home:focus {
+.header__home:focus-visible,
+.header__home:focus {
   outline: 0.1875rem dotted var(--focus-visible-outline-color);
   outline-offset: 0.3125rem;
 }
