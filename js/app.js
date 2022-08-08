@@ -348,15 +348,18 @@
   const getUserDataBasedOnURL = async () => {
     try {
       const params = new URLSearchParams(document.location.search);
-      const username = params.get("user").trim();
-      const isUserNameValid = validateUserInput(username);
+      let username = params.get("user");
 
-      if (isUserNameValid) {
+      if (username) {
+        username = username.trim();
+        const isUserNameValid = validateUserInput(username);
         searchInput.value = username;
-        const json = await fetchUserData(username);
-        showUserData(json);
-      } else {
-        showError("Invalid username");
+        if (isUserNameValid) {
+          const json = await fetchUserData(username);
+          showUserData(json);
+        } else {
+          showError("Invalid username");
+        }
       }
     } catch (error) {
       console.error(error);
