@@ -125,6 +125,7 @@
 }
 
 .result__number {
+  display: block;
   margin-top: rem(8);
   color: var(--result-number-color);
   font-weight: 700;
@@ -133,11 +134,6 @@
   @include breakpoint-up("tiny") {
     font-size: rem(22);
   }
-}
-
-.result__statistic .result__item {
-  display: flex;
-  flex-direction: column;
 }
 
 .result__details {
