@@ -25,9 +25,3 @@
   outline: rem(3) dotted var(--focus-visible-outline-color);
   outline-offset: rem(5);
 }
-
-.theme-switcher__icon {
-  @include prefers-motion {
-    transition: filter var(--primary-transition);
-  }
-}

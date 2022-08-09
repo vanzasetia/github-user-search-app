@@ -175,17 +175,6 @@ img {
   height: auto;
 }
 
-/** 
- * Avoid overloading a user with 
- * sound from a video that 
- * autoplays when the page is loaded.
- *
- * Source: https://github.com/AllThingsSmitty/css-protips#hide-autoplay-videos-that-arent-muted
- */
-video[autoplay]:not([muted]) {
-  display: none;
-}
-
 /**
  * Set font-size on Form Elements for a 
  * Better Mobile Experience
@@ -235,10 +224,4 @@ svg {
   transform: translate(0);
   outline: 0.2em dashed var(--focus-visible-outline-color);
   outline-offset: 0.25em;
-}
-
-.hidden {
-  visibility: hidden;
-  width: 0.0625rem;
-  height: 0;
 }

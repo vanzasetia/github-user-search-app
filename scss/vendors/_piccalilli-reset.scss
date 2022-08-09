@@ -1,6 +1,3 @@
-/*------------------------------------*\
-  #CSS-RESET
-\*------------------------------------*/
 /*  Modern CSS reset - https://piccalil.li/blog/a-modern-css-reset/ */
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -19,11 +16,6 @@ body {
   text-rendering: optimizeSpeed;
   min-height: 100vh;
   line-height: 1.5;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
 }
 
 /* Inherit fonts for inputs and buttons */
