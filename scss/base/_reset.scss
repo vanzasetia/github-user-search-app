@@ -140,7 +140,6 @@ body {
   background-color: var(--body-background-color);
   padding: rem(30) rem(24);
   color: var(--body-font-color);
-  font: #{rem(13)}/ 1.6 "Space Mono", monospace;
 
   @include prefers-motion {
     transition: background-color var(--primary-transition),
@@ -149,11 +148,20 @@ body {
 
   @include breakpoint-up("tiny") {
     padding: rem(40);
-    font-size: rem(15);
   }
 
   @include breakpoint-up("very-small") {
     padding: rem(60);
+  }
+}
+
+header,
+main,
+footer {
+  font: #{rem(13)}/ 1.6 "Space Mono", monospace;
+
+  @include breakpoint-up("tiny") {
+    font-size: rem(15);
   }
 }
 
