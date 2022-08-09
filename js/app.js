@@ -23,7 +23,7 @@
     themeSwitcherIcon.setAttribute("href", "/svg/sprite.svg#moon");
   };
 
-  const changeDarkTheme = () => {
+  const toggleDarkTheme = () => {
     root.classList.toggle("is-light");
     const isLightTheme = root.classList.contains("is-light");
     if (isLightTheme) {
@@ -35,7 +35,7 @@
     }
   };
 
-  const changeLightTheme = () => {
+  const toggleLightTheme = () => {
     root.classList.toggle("is-dark");
     const isDarkTheme = root.classList.contains("is-dark");
     if (isDarkTheme) {
@@ -51,9 +51,9 @@
     const isDarkTheme = matchMedia("(prefers-color-scheme: dark)").matches;
 
     if (isDarkTheme) {
-      changeDarkTheme();
+      toggleDarkTheme();
     } else {
-      changeLightTheme();
+      toggleLightTheme();
     }
   };
 
@@ -100,13 +100,16 @@
       const response = await fetch(
         `https://api.github.com/users/${username}`
       ).catch((error) => showError(error.message));
+      const OK = 200;
+      const NOT_FOUND = 404;
+      const FORBIDDEN = 403;
 
-      if (response.status === 200 && response.ok) {
+      if (response.status === OK && response.ok) {
         const json = await response.json();
         return json;
-      } else if (response.status === 404 && !response.ok) {
+      } else if (response.status === NOT_FOUND && !response.ok) {
         showError("No results");
-      } else if (response.status === 403 && !response.ok) {
+      } else if (response.status === FORBIDDEN && !response.ok) {
         fetch("https://api.ipify.org/")
           .then((response) => response.text())
           .then((ip) =>
@@ -141,7 +144,7 @@
     }
   };
 
-  const setToNotAvailableState = (
+  const setElementStateToNotAvailable = (
     elementToStyle,
     elementToHoldValue,
     text,
@@ -183,7 +186,7 @@
     nickname = validateData(nickname);
 
     if (nickname === "Not Available") {
-      setToNotAvailableState(name, name, nickname, "sr-only");
+      setElementStateToNotAvailable(name, name, nickname, "sr-only");
     } else {
       setTextToAvailable(name, name, nickname, "sr-only");
     }
@@ -208,7 +211,7 @@
     description = validateData(description);
 
     if (description === "Not Available") {
-      setToNotAvailableState(bio, bio, "This profile has no bio");
+      setElementStateToNotAvailable(bio, bio, "This profile has no bio");
     } else {
       setTextToAvailable(bio, bio, description);
     }
@@ -235,7 +238,7 @@
     locationData = validateData(locationData);
 
     if (locationData === "Not Available") {
-      setToNotAvailableState(location, element, locationData);
+      setElementStateToNotAvailable(location, element, locationData);
     } else {
       setTextToAvailable(location, element, locationData);
     }
@@ -250,7 +253,7 @@
     const isContainHTTP = url.match(HTTPRegEx);
 
     if (url === "Not Available") {
-      setToNotAvailableState(website, element, url);
+      setElementStateToNotAvailable(website, element, url);
     } else if (!isContainHTTP) {
       const anchorTag = createAnchorTag(`http://${url}`, url, "result__link");
       setLinkToAvailable(website, element, anchorTag);
@@ -267,7 +270,7 @@
     username = validateData(username);
 
     if (username === "Not Available") {
-      setToNotAvailableState(twitter, element, username);
+      setElementStateToNotAvailable(twitter, element, username);
     } else {
       const anchorTag = createAnchorTag(
         `https://twitter.com/${username}`,
@@ -287,7 +290,7 @@
     const isCompanyOnGitHub = company.match(companyRegEx);
 
     if (company === "Not Available") {
-      setToNotAvailableState(office, element, company);
+      setElementStateToNotAvailable(office, element, company);
     } else if (isCompanyOnGitHub) {
       company = company.substring(1);
       const anchorTag = createAnchorTag(
