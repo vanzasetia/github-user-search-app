@@ -91,8 +91,19 @@
     }
   };
 
-  const showError = (message) => {
+  const showError = (message = "Something went wrong") => {
     alertMessage.textContent = message;
+  };
+
+  const getUserIPAddress = async () => {
+    try {
+      const response = await fetch("https://api.ipify.org/");
+      const text = await response.text();
+      return text;
+    } catch (error) {
+      showError();
+      console.error(error);
+    }
   };
 
   const fetchUserData = async (username) => {
@@ -110,14 +121,11 @@
       } else if (response.status === NOT_FOUND && !response.ok) {
         showError("No results");
       } else if (response.status === FORBIDDEN && !response.ok) {
-        fetch("https://api.ipify.org/")
-          .then((response) => response.text())
-          .then((ip) =>
-            showError(`API rate limit exceeded for ${ip} (403 Forbidden)`)
-          )
-          .catch((error) => console.error(error));
+        const ip = await getUserIPAddress();
+        showError(`API rate limit exceeded for ${ip} (403 Forbidden)`);
       }
     } catch (error) {
+      showError();
       console.error(error);
     }
   };
