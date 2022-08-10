@@ -108,9 +108,7 @@
 
   const fetchUserData = async (username) => {
     try {
-      const response = await fetch(
-        `https://api.github.com/users/${username}`
-      ).catch((error) => showError(error.message));
+      const response = await fetch(`https://api.github.com/users/${username}`);
       const OK = 200;
       const NOT_FOUND = 404;
       const FORBIDDEN = 403;
