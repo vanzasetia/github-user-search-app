@@ -333,6 +333,7 @@
       showWebsite(blog);
       showTwitter(twitter);
       showCompany(company);
+      document.title = `devfinder | ${username}`;
     } catch (error) {
       console.error(error);
     }
