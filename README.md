@@ -67,7 +67,7 @@ My users should be able to:
 
 ### Links
 - [Live Review](https://officialdevfinder.netlify.app/)
-- [Frontend Mentor Solution Page]()
+- [Frontend Mentor Solution Page](https://www.frontendmentor.io/solutions/github-user-search-app-html-css-sass-javascript-async-await-nBt6_lQS5M)
 
 ### Screenshots
 
