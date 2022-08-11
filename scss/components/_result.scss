@@ -145,13 +145,17 @@
   }
 }
 
+.result__details .result__item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .result__details .result__item:not(:first-child) {
   margin-top: rem(16);
 }
 
 .result__link {
-  word-break: break-all;
-
   @include link-styling();
   @include focus-visible(var(--focus-visible-outline-color));
 }
