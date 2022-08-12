@@ -1,5 +1,5 @@
 {
-  "name": "devfinder",
+  "name": "devfinder | GitHub User Search App",
 	"short_name": "devfinder",
 	"description": "In this project, I use the GitHub users API to pull profile data and display it. It's a great challenge for me to practice working with a 3rd-party API.",
 	"start_url": "/",
