@@ -255,11 +255,15 @@
     const element = website.querySelector(".js-value");
     element.textContent = "";
     url = validateData(url);
+    const whitespaceRegEx = /\s/;
+    const isContainWhiteSpace = url.match(whitespaceRegEx);
     const HTTPRegEx = /^https?:\/\//;
     const isContainHTTP = url.match(HTTPRegEx);
 
     if (url === "Not Available") {
       setElementStateToNotAvailable(website, element, url);
+    } else if (isContainWhiteSpace) {
+      setTextToAvailable(website, element, url);
     } else if (!isContainHTTP) {
       const anchorTag = createAnchorTag(`http://${url}`, url, "result__link");
       setLinkToAvailable(website, element, anchorTag);
