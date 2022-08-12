@@ -1,5 +1,3 @@
-**This README is not finished yet. But of course, feel free to take a look!**
-
 ![It's finally done! GitHub User Search App. Challenge by Frontend Mentor. Coded by Vanza Setia](./images/banner.jpg)
 
 <p align="left">
@@ -96,6 +94,7 @@ My users should be able to:
 ### What I Learned
 
 #### GitHub User API
+[(Back to top)](#table-of-contents)
 
 Here is the URL.
 
@@ -114,6 +113,7 @@ Now, for the status code, there is a chance that we can get `403`. This will hap
 Now, we have a good understanding of what can we possibly get when making a request to the API. It's time to talk about asynchronous programming!
 
 #### Asynchronous Programming
+[(Back to top)](#table-of-contents)
 
 Based on my understanding, asynchronous programming is a program that doesn't block the main process of executing JavaScript. Simple, right? Well, try to take a look yourself at the [Wikipedia definition for asynchronous programming](https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)) for the complete definition. (It's confusing for me. 😅)
 
@@ -136,22 +136,22 @@ The example above reminds me of the Internet Explorer meme.
 
 ![](./images/internet-explorer-meme.jpg)
 
-##### XMLHttpRequest
+#### Multiple Ways to Make a Request to the Server
+[(Back to top)](#table-of-contents)
 
-Before diving into the `XMLHttpRequest`, I want to explain a little bit about AJAX.
+There are two ways that I learned.
+- First, an old-school way of doing it is by using [`XMLHttpRequest()`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
+- Second, the new way of doing it is by using [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
 
-AJAX stands for Asynchronous JavaScript XML. Even though its acronyms only contain XML, it is not only able to receive and send information or data in XML. It can also send and receive data in JSON, text, and HTML.
+I was using both of them. I found that both of them were confusing to me (bad first impression). 😆
 
-There are two major features of AJAX that allow us as web developers to make:
+When using `XMLHttpRequest`, there are things that I love and I hate. 
 
-- Make requests to the server without reloading the page
-- Receive and work with data from the server
+I love it because it has everything. For example, if you want to specify the data type that you will get then you can do, [`XMLHttpRequest.type`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType). 
 
-> Reference: [MDN documentation AJAX](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started)
+I hate it because it can't return the data. So, if you want to access the data then you have to use it inside the `function`. The reason is simply that it is an asynchronous process. Also, I have to keep creating a new `XMLHttpRequest` object. Otherwise, it will be impossible to use it.
 
-Now, let's dive in to the XMLHttpRequest!
-
-Before I start explaining, let me give you some code snippets to fetch user data with `XMLHttpRequest`.
+By the way, this is the way I used it. (it's not a complete code if you want to see the full code, [view xmlhttprequest.js file](./js/xmlhttprequest.js))
 
 ```javascript
 const fetchUserData = (username) => {
@@ -164,202 +164,330 @@ const fetchUserData = (username) => {
   xhr.onreadystatechange = () => {
     const DONE = 4;
     const OK = 200;
-    const NOT_FOUND = 404;
-    const FORBIDDEN = 403;
 
     if (xhr.readyState === DONE) {
       if (xhr.status === OK) {
         const json = xhr.response;
         showUserData(json);
-      } else if (xhr.status === NOT_FOUND) {
-        showError("No results");
-      } else if (xhr.status === FORBIDDEN) {
-        getUserIPAddress();
       }
     }
   };
-
-  xhr.onerror = () => {
-    showError("Something went wrong");
-  };
-
-  xhr.send();
 };
 ```
 
-Now, the way I use `XMLHttpRequest` to get the user data is the following:
-
-- First, I need to create a new `XMLHttpRequest()` object.
-```javascript
-const xhr = new XMLHttpRequest();
-```
-- Then, I create a request with the `open()` method. The first parameter is the HTTP request method which in this case is the `GET` method. The second parameter is the URL.
-```javascript
-xhr.open("GET", `https://api.github.com/users/${username}`);
-```
-- After that, I specify the `responseType` to JSON.
-```javascript
-xhr.responseType = "json";
-```
-- Next, to handle the server response, I use the `onreadystatechange` event handler property.
-  - First, I need to make sure that the work is done by creating an `if` statement.
-  - After that, if the `xhr.status` returns `200` then the program continues to show the user data. But, if the status code is `404` then shows an error message. Lastly, if the status code is `403` then I want to get the user's IP address and then show an error message that tells the user, that his/her IP address has been blocked because of too many requests.
-```javascript
-xhr.onreadystatechange = () => {
-  const DONE = 4;
-  const OK = 200;
-  const NOT_FOUND = 404;
-  const FORBIDDEN = 403;
-
-  if (xhr.readyState === DONE) {
-    if (xhr.status === OK) {
-      const json = xhr.response;
-      showUserData(json);
-    } else if (xhr.status === NOT_FOUND) {
-      showError("No results");
-    } else if (xhr.status === FORBIDDEN) {
-      getUserIPAddress();
-    }
-  }
-};
-```
-- If there is an error then I want to show the user a message. So, I call the `showError()` function.
-```javascript
-xhr.onerror = () => {
-  showError("Something went wrong");
-};
-```
-- Lastly, I need to make sure to send the request to the server. Otherwise, nothing will happen.
-```javascript
-xhr.send();
-```
-
-If you want to learn more about `XMLHttpRequest` then I recommend taking a look at the [MDN documentation](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest).
-
-##### Fetch
-
-There is another way to create a request to a server by using [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). `fetch()` will return a `Promise` so, I need to use `Promise`.
-
-Now, here is how I fetch the GitHub user API with `Promise`.
+Maybe, I should use the callback approach (?).
 
 ```javascript
-const handleResponse = (response) => {
-  return new Promise((resolve) => {
+// set a second parameter called "callback" 
+// which will be a function (or callback function).
+const fetchUserData = (username, callback) => {
+  const xhr = new XMLHttpRequest();
+
+  xhr.open("GET", `https://api.github.com/users/${username}`);
+
+  xhr.responseType = "json";
+
+  xhr.onreadystatechange = () => {
+    const DONE = 4;
     const OK = 200;
-    const NOT_FOUND = 404;
-    const FORBIDDEN = 403;
 
-    if (response.status === OK && response.ok) {
-      return resolve(response);
-    } else if (response.status === NOT_FOUND && !response.ok) {
-      showError("No results");
-    } else if (response.status === FORBIDDEN && !response.ok) {
-      getUserIPAddress();
+    if (xhr.readyState === DONE) {
+      if (xhr.status === OK) {
+        const json = xhr.response;
+        // call the callback to access the data
+        callback(json);
+      }
     }
-  });
+  };
 };
+```
 
+**Next!** It is the Fetch API!
+
+It is much simpler though and also it can return data (unlike `XMLHttpRequest`). It is also globally available (or available in global scope). It means that I don't have to keep creating a new fetch object.
+
+So, it is very simple!
+
+If I want to simply fetch user data then this code will work.
+
+```javascript
+fetch(`https://api.github.com/users/${username}`)
+  .then((response) => response.json())
+  .then((json) => /* do whatever I like */)
+```
+
+To handle error, I used the `.catch()`.
+
+```javascript
+fetch(`https://api.github.com/users/${username}`)
+  .then((response) => response.json())
+  .then((json) => /* do whatever I like */)
+  .catch((error) => /* handle error */)
+```
+
+#### Elegant Way to Work with Promises
+[(Back to top)](#table-of-contents)
+
+In real life, sometimes it is really hard to keep our promises. Sometimes, I need to break another promise to keep another promise. It can be complicated! But, how about in the JavaScript world?
+
+In JavaScript, there is a better way to deal with `Promise` which is by using `async` and `await` keywords. So, instead of keeping doing `.then()` or even worse a lot of `callback` functions we can deal with it more elegantly.
+
+So, in async/await the code will be something like this.
+
+```javascript
 const fetchUserData = (username) => {
-  fetch(`https://api.github.com/users/${username}`)
-    .then((response) => handleResponse(response))
-    .then((data) => data.json())
-    .then((json) => showUserData(json))
-    .catch((error) => {
-      showError();
-      console.error(error);
-    });
-};
-```
-
-So, with `fetch()` here is how it goes:
-- First, fetch the API.
-```javascript
-fetch(`https://api.github.com/users/${username}`)
-```
-- Second, since it will return a `Promise` then I will use `.then()` to access the data.
-- Then, I need to handle the response before converting the data to JSON. It is simply because I need to check if the status code is `404` then I want to show the alert message (the same reasons as the `XMLHttpRequest`).
-```javascript
-fetch(`https://api.github.com/users/${username}`)
-  .then((response) => handleResponse(response))
-```
-- After that, convert the response to JSON.
-```javascript
-fetch(`https://api.github.com/users/${username}`)
-  .then((response) => handleResponse(response))
-  .then((data) => data.json())
-```
-- Then, pass in the JSON data to the `showUserData()` function.
-```javascript
-fetch(`https://api.github.com/users/${username}`)
-  .then((response) => handleResponse(response))
-  .then((data) => data.json())
-  .then((json) => showUserData(json))
-```
-- Finally, end the promise chaining with `.catch()` to catch any error that happens.
-```javascript
-fetch(`https://api.github.com/users/${username}`)
-  .then((response) => handleResponse(response))
-  .then((data) => data.json())
-  .then((json) => showUserData(json))
-  .catch((error) => {
-    showError();
-    console.error(error);
-  });
-```
-
-##### Async Await
-
-My favorite way to write asynchronous JavaScript in my opinion is using `async` and `await` keywords. In my opinion, it makes the code much easier to understand since everything is linear (no `.then()` or creating a new `xhr` object).
-
-So, the way I did the program with `async` and `await` keywords are the following.
-
-```javascript
-const getUserIPAddress = async () => {
-  try {
-    const response = await fetch("https://api.ipify.org/");
-    const text = await response.text();
-    return text;
-  } catch (error) {
-    showError();
-    console.error(error);
-  }
-};
-
-const fetchUserData = async (username) => {
   try {
     const response = await fetch(`https://api.github.com/users/${username}`);
-    const OK = 200;
-    const NOT_FOUND = 404;
-    const FORBIDDEN = 403;
-
-    if (response.status === OK && response.ok) {
-      const json = await response.json();
-      return json;
-    } else if (response.status === NOT_FOUND && !response.ok) {
-      showError("No results");
-    } else if (response.status === FORBIDDEN && !response.ok) {
-      const ip = await getUserIPAddress();
-      showError(`API rate limit exceeded for ${ip} (403 Forbidden)`);
-    }
+    const json = await response.json();
+    /* do something with the json */
   } catch (error) {
-    showError();
-    console.error(error);
+    /* handle error */
   }
-};
+}
 ```
 
-The explanation:
-- First, I still use `fetch()` to create a request to the server.
-- Second, I handle the HTTP status code responses. If the status code is `200` then return the data, ect.
-- Third, instead of using `.catch` to catch errors, I use `try...catch` statement to catch any errors that will happen.
-- Lastly, instead of having the `showUserData()` inside the async function, I could just return the data.
+#### Dark Mode in Hard Mode
+[(Back to top)](#table-of-contents)
 
+Enough with API! Now, let's talk about another important feature of the application which is switching between light mode and dark mode.
+
+I love dark mode. So, this is something that I have to be able to do. But, it is not as simple as toggling a CSS class because there are things that I need to keep in mind.
+
+- First, I need to make sure that the app follows the user's color scheme preference.
+- Second, the app should be able to remember the user's latest selected color scheme.
+- Third, there should not be [*flashing*](#flashing).
+
+Now, let me explain how I managed to keep these three things working together.
+
+The first one is pretty straightforward. All I need to do was to use the `prefers-color-scheme` media query. But, it was not just like that. I used CSS custom properties to control all the colors for the element.
+
+For example for the `body` background color and text color:
+
+```css
+:root {
+  /* color variables */
+  --very-light-blue: hsl(227, 100%, 98%);
+  --dark-blue-100: hsl(217, 35%, 45%);
+  --very-dark-blue-300: hsl(220, 40%, 13%);
+  --white: hsl(0, 0%, 100%);
+
+  /* variables that handle the color for each element */
+  --body-background-color: var(--very-light-blue);
+  --body-font-color: var(--dark-blue-100);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --body-background-color: var(--very-dark-blue-300);
+    --body-font-color: var(--white);
+  }
+}
+```
+
+For the rest of the other elements, I did the same thing.
+
+Next, to make the app remembers the latest user's color scheme preference, I used `localStorage`. But, the way I did it might be interesting for you.
+
+There are two possible ways for the user to change the color scheme of the website.
+
+- First, the user can click the theme switcher.
+- Second, the user can change the color scheme preference from the user's system setting.
+
+Here is what I was doing.
+
+So, when the user changes the color scheme through the user's system setting then, the website would follow it and also removes the latest user's color scheme. By doing this, the app can adapt to different situations.
+
+(Make sure you drink enough water before reading the next section. I am telling you this because it can be confusing.)
+
+There are two scenarios:
+- First scenario, the user visits the site with light mode because the user's color scheme preference is light. Then, the user decides to switch to dark mode by clicking the theme switcher. After that, the user clicks the theme switcher again, so the color scheme of the website would be light. Then, the user changes the color scheme preference to dark. Then, the app will change to dark mode as well.
+- Second scenario, the user visits the site with light mode because the user's color scheme preference is light. Then, the user decides to switch to dark mode by clicking the theme switcher. After that, the user changes the user's color scheme preference to dark. The website is still in dark mode. But, what happens in the background, the app will remove the user's latest selected color scheme. Then, the user switches the color scheme to dark by clicking the theme switcher. After that, if the user closes the browser and then opens the website again, the website will be still in dark mode.
+
+So, the conclusion is that the app can adapt. As simple as that.
+
+> You might be wondering. Who is the one who will be doing this? And the answer is **me**. I don't how other users would use the website. But, since it is a possible thing to happen so I think it's best to be prepared. 😅
+
+Next! How did I prevent the app from *flashing*?
+
+I had this JavaScript code to check the user's latest selected color scheme.
+
+```javascript
+const rootClassTheme = localStorage.getItem("root-class");
+if (rootClassTheme) {
+  const root = document.querySelector("html");
+  root.classList.add(rootClassTheme);
+}
+```
+
+So, what the code does is check if the `localStorage` saved the latest user's selected color scheme. If it has, then apply the color scheme by adding the class to the `html` element.
+
+#### Flashing
+[(Back to top)](#table-of-contents)
+
+Flashing or *color flashing* can be happening when the user's latest selected color scheme is the opposite color scheme of the system's preference.
+
+For example, the user's system's color scheme preference is light. Then, the user changes the color scheme to dark by clicking the theme switcher. After that, the user closes the browser's window to eat breakfast. After the user finishes breakfast, the user comes back to the site. The user will notice that the first time the user visits the page, the user can see light mode for a short amount of time. Lastly, the page changes back to dark mode.
+
+I have created a GIF that demonstrates the flashing.
+
+<details>
+<summary>Expand to see the GIF</summary>
+
+![Initial color scheme is light. Then, I switch the color scheme to dark by clicking the theme switcher button. After that, I refresh the page. The flashing is happening. For several milliseconds the page has a light color scheme before changing back to the saved color scheme.](./images/flashing.gif)
+
+</details>
+
+It is happening because the JavaScript will only be downloaded after the document (HTML) has been fully parsed (`defer` attribute). That's why there are some milliseconds (in my case) where the page will be using the default color scheme and then applying the user's latest selected color scheme.
+
+> For your information: I hide the GIF by default. But, you can still see it if you want. It is useful because not all people can deal with animation. For more information, I recommend reading these articles [*"Your Interactive Is Making Me Sick"*](https://source.opennews.org/articles/motion-sick/) and [*"Accessibility For Vestibular Disorders"*](https://alistapart.com/article/accessibility-for-vestibular/).
+
+#### Regular Expressions
+[(Back to top)](#table-of-contents)
+
+I used some regular expressions to validate the user's data. So, here are all the regular expressions with some explanations.
+
+The first RegEx is the date RegEx. It is used to get the value from the `new Date(date).toUTCString()`. The return value of the `toUTCString()` is the same format that I need to render the joined date.
+
+```javascript
+/**
+ * 
+ * Date
+ * - Must have two digits for the day of the month
+ * - For the Month:
+ *   - Must be three letters
+ *   - The first letter must be capitalized
+ * - Must have four digits for the year
+ * 
+ * @author Vanza Setia <https://github.com/vanzasetia>
+ */
+
+const dateRegEx = /\d{2} [A-Z][a-z]{2} \d{4}/;
+```
+
+The second RegEx is the whitespace RegEx. I used this RegEx to check if the value of the `website_url` contains whitespace. If it does contain whitespace then I will just render it as a plain text.
+
+```javascript
+const whitespaceRegEx = /\s/;
+```
+
+The third RegEx is the HTTP RegEx. It is used to check whether the link contains `http` or `https`. The reason for doing this is because if the `website_url` doesn't contain the `http` or `https` then the script has to add it.
+
+If I don't add it, for example, the value that I get for the website URL is [example.com](example.com) then it will navigate to [https://officialdevfinder.netlify.app/example.com](https://officialdevfinder.netlify.app/example.com).
+
+```javascript
+/**
+ * 
+ * HTTP
+ * - Must be started with "http"
+ * - Optionally to be "https"
+ * - Must be followed by "://"
+ * 
+ * @example
+ * // return false
+ * const HTTPRegEx = /^https?:\/\//;
+ * HTTPRegEx.test("example.com")
+ * 
+ */
+const HTTPRegEx = /^https?:\/\//;
+```
+
+The fourth RegEx is the company RegEx. It is used to check for the `company` value. So, if the `company` value has `@` character then I want to make it a link. Otherwise, I would just show it as it is (as normal text). For example, if the value of the `company` is `@github` then the script will make wrap it with an anchor tag and also provide the link to the company profile, [@github](https://github.com/github). But, if the value of the `company` is `Example Company` then it will be rendered as plain text.
+
+```javascript
+const companyRegEx = /@/;
+```
+
+But, there is an issue that I don't know how to solve. If the user puts a fake company with `@` character then it will get converted to a link even though the company has no GitHub account. For example, if the value of the `company` is `@randomcompany` then the script will make wrap it with an anchor tag and also provide the link to the company profile, [@randomcompanywhichdoesntexist](https://github.com/randomcompanywhichdoesntexist).
+
+I actually have an idea. The idea is to check whether the link exists or not. But, it is not possible to check it with `fetch()`. I did some research and it looks like I have to use PHP. (I don't understand PHP)
+
+Last but an important one is a RegEx that is used to check the user's input. So, if the user's input is valid then start searching for the user. If it is not valid then, the app will just give an alert.
+
+```javascript
+/**
+ * source: https://github.com/shinnn/github-username-regex
+ */
+const githubUserNameRegEx = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
+```
+
+It is not created by me. It is created by a GitHub user called [shinnn](https://github.com/shinnn). This person is creating the RegEx based on the official GitHub valid username.
+
+![Alert. Username is too long (maximum is 39 characters). Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.](./images/github-username-complete-criteria.png)
+
+#### Overflowing Text
+[(Back to top)](#table-of-contents)
+
+At this moment, I thought that I had done with the challenge. Then, [Yazdun](https://www.frontendmentor.io/profile/Yazdun) came in and said that there is an overflowing issue when he searched **mseidel819**.
+
+![Yazdun said, "hi Vanza, Great job on the challenge, I specially love the fact that you added a query in the url for the searched user, that's a really nice touch. Here is quick issue that Matt Seidel noticed on my solution and then I could fix it. Try searching mseidel819 in your app and you will see a weird overflow which doesn't look nice, you may wanna take care of that."](./images/yazdun-comment.png)
+
+Then, my head says to me, *"let's fix the bug!"*
+
+So, now let's take a look at the overflowing issue!
+
+![](./images/devfinder-mseidel819-overflowing-issue.png)
+
+Okay, it's not looking good. So, I have to do something.
+
+As a developer, the first thing I did was do some research on the internet. I found the [MDN documentation page that explains how to deal with the overflowing text](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Text/Wrapping_Text).
+
+![](./images/mdn-documentation-overflowing-text.png)
+
+I didn't manage to find the answer on the website. But, I got some information about some CSS properties that deal with text wrappings such as `word-break` and `overflow` properties. 
+
+I had used `word-break` earlier to fix the long URL issue.
+
+![](./images/devfinder-vanzasetia-link-issue.png)
+
+After applying `word-break: break-all`.
+
+![](./images/devfinder-vanzasetia-overflowing-issue.png)
+
+Anyway, let's continue the research! 
+
+I was thinking, *"How does GitHub handle this problem?"*. Then, I took a look at the [mseidel819 profile on GitHub](https://github.com/mseidel819). After that, I inspected the styling of the element that holds value for the company.
+
+![](./images/how-github-handle-overflowing-text-1.png)
+
+At this time, I knew that GitHub handle the overflowing text issue with three lines of code.
+
+```css
+.css-truncate.css-truncate-target {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
+
+So, what did I do? Copy-paste the code! 😆
+
+Now, the problem is solved!
+
+![](./images/devfinder-mseidel819-overflowing-issue-solved.png)
+
+You might be wondering that if the text content is not visible then how the users would access the content? The text content is still 100% available. You can [try to copy-paste the text](https://officialdevfinder.netlify.app/?user=mseidel819&ref=overflowing-text) and you will get the full value. Also, I tested the site with Narrator and it can read the whole text.
+
+But, I had a better solution for this problem.
+
+So, instead of trying to keep forcing myself to follow the design. I tried to make the list into a one-column layout.
+
+![](./images/devfinder-mseidel819-new-design.png)
+
+I think this is a good solution because not only does it fix the overflowing issue but also there's no visually hidden text. Everything can be seen clearly and nicely!
+
+But, I still use GitHub's approach on how to solve the issue. The reason is that the challenge is trying to create the website looking as close to the design as possible.
 
 ### Feedback and Suggestions
+[(Back to top)](#table-of-contents)
 
 I am still new at asynchronous programming. So, if you notice some mistakes or spot some bad practices then feel free to let me know. I will update the code as well as the `README`! Also, I will add your name to the **Acknowledgements**.
 
 ### Useful Resources
+[(Back to top)](#table-of-contents)
+
+- [*"A Theme Switcher | Inclusive Components"*](https://inclusive-components.design/a-theme-switcher/) and [*"Toggle Buttons | Inclusive Components"*](https://inclusive-components.design/toggle-button/) articles are helping me to create accessible theme switcher. I would recommend everyone that doing this challenge read both articles!
+- [ryanmcdermott/clean-code-javascript: Clean Code concepts adapted for JavaScript](https://github.com/ryanmcdermott/clean-code-javascript) - I wish that I know this repository when I was writing the JavaScript. This repository contains a lot of best practices on how to write clean JavaScript code. I highly recommend taking some time to read it!
+- [RegExr](https://regexr.com/) - This is the tool that I used when I was crafting my RegEx or testing the RegEx that I want to use. It has a handy cheatsheet and is also easy to use. I'd recommend it to anyone that wants to create or test some RegEx!
 
 ## Author
 [(Back to top)](#table-of-contents)
@@ -367,7 +495,7 @@ I am still new at asynchronous programming. So, if you notice some mistakes or s
 - Frontend Mentor - [@vanzasetia](https://frontendmentor.io/profile/vanzasetia)
 - Twitter - [@vanzasetia](https://twitter.com/vanzasetia)
 - Code Newbie - [@vanzasetia](https://community.codenewbie.org/vanzasetia)
-- Want to see me on other platform? [Check my linktree!](https://linktr.ee/vanzasetia)
+- Want to see me on other platforms? [Check my linktree!](https://linktr.ee/vanzasetia)
 
 ## Acknowledgements
 [(Back to top)](#table-of-contents)

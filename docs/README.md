@@ -70,6 +70,7 @@ These are the guidelines that I follow when I write the code.
 - [Site-Shot](https://www.site-shot.com/) - take screenshot of the website
 - [Squoosh](https://squoosh.app/) - optimize images
 - [Canva](https://www.canva.com/) - design the banner
+- [Chicago - Title Capitalization Tool - Capitalize My Title - Title Case Tool](https://capitalizemytitle.com/style/Chicago/)
 
 ### Validations
 - [Meta Tags — Preview, Edit and Generate](https://metatags.io/)
@@ -94,3 +95,4 @@ These are the guidelines that I follow when I write the code.
 - [Async/await - Wikipedia](https://en.wikipedia.org/wiki/Async/await)
 - [Ajax (programming) - Wikipedia](https://en.wikipedia.org/wiki/Ajax_(programming))
 - [XMLHttpRequest - Wikipedia](https://en.wikipedia.org/wiki/XMLHttpRequest)
+- [Title Capitalization Rules | Grammarly](https://www.grammarly.com/blog/capitalization-in-the-titles/)
