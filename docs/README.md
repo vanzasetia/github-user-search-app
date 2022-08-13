@@ -45,6 +45,7 @@ These are the guidelines that I follow when I write the code.
 - [Date - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 - [Date and Time Formats | w3.org](https://www.w3.org/TR/NOTE-datetime)
 - [`word-break` - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/word-break) - I used this to fix the link issue. If the link is too long then it will break into two lines. You can see toggle the `word-break` styling on the `320px` width to see the issue and how it fixes the issue.
+- [<input type="url"> - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url) - it has an interesting example about the use case of [`<detalist>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist) element.
 
 ### Articles
 - [How to Disable Links | CSS-Tricks](https://css-tricks.com/how-to-disable-links/)
