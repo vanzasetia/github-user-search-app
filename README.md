@@ -421,7 +421,7 @@ At this moment, I thought that I had done with the challenge. Then, [Yazdun](htt
 
 ![Yazdun said, "hi Vanza, Great job on the challenge, I specially love the fact that you added a query in the url for the searched user, that's a really nice touch. Here is quick issue that Matt Seidel noticed on my solution and then I could fix it. Try searching mseidel819 in your app and you will see a weird overflow which doesn't look nice, you may wanna take care of that."](./images/yazdun-comment.png)
 
-Then, my head says to me, *"let's fix the bug!"*
+Then, my brain said to me, *"let's fix the bug!"*
 
 So, now let's take a look at the overflowing issue!
 
