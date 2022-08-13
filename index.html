@@ -164,9 +164,9 @@
       <div class="container">
         <form class="search-form js-search-form" autocomplete="on">
           <div role="search">
-            <label for="username-input" class="sr-only">
+            <p id="username-input-label" class="sr-only">
               Search GitHub username
-            </label>
+            </p>
             <input
               type="search"
               name="username"
@@ -175,11 +175,16 @@
               placeholder=" "
               required="required"
               autocomplete="username"
+              aria-labelledby="username-input-label"
               aria-describedby="error"
             />
-            <p class="search-form__placeholder" aria-hidden="true">
+            <label
+              for="username-input"
+              class="search-form__placeholder"
+              aria-hidden="true"
+            >
               Search GitHub username...
-            </p>
+            </label>
             <p
               id="error"
               class="search-form__error js-alert-message"

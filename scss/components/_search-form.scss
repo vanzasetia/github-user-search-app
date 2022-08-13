@@ -45,7 +45,6 @@
   position: absolute;
   top: rem(20);
   left: rem(45);
-  pointer-events: none;
 
   @include prefers-motion {
     transition: top var(--primary-transition), left var(--primary-transition);
