@@ -46,6 +46,8 @@ These are the guidelines that I follow when I write the code.
 - [Date and Time Formats | w3.org](https://www.w3.org/TR/NOTE-datetime)
 - [`word-break` - CSS: Cascading Style Sheets | MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/word-break) - I used this to fix the link issue. If the link is too long then it will break into two lines. You can see toggle the `word-break` styling on the `320px` width to see the issue and how it fixes the issue.
 - [<input type="url"> - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url) - it has an interesting example about the use case of [`<detalist>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist) element.
+- [aria-labelledby - Accessibility | MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) - MDN documentation says, "*The `aria-labelledby` property value can include content from elements that aren't even visible.*".
+- [Accessible Rich Internet Applications (WAI-ARIA) 1.3 - `aria-lablledby` Specifications](https://w3c.github.io/aria/#aria-labelledby)
 
 ### Articles
 - [How to Disable Links | CSS-Tricks](https://css-tricks.com/how-to-disable-links/)
@@ -65,6 +67,9 @@ These are the guidelines that I follow when I write the code.
 - [CSS transitions and hover animations, an interactive guide](https://www.joshwcomeau.com/animation/css-transitions/) - a nice blog post by Josh Comeau. It helps me learn more about animation and transition.
 - [prefers-color-scheme: Hello darkness, my old friend | web.dev](https://web.dev/prefers-color-scheme/) - a complete guide to create dark mode. It includes everything you need to know to create a good dark mode.
 - [JavaScript naming conventions: do’s and don’ts](https://www.freecodecamp.org/news/javascript-naming-conventions-dos-and-don-ts-99c0e2fdd78a/)
+- [Accessible Icon Buttons – Sara Soueidan, inclusive design engineer](https://www.sarasoueidan.com/blog/accessible-icon-buttons/) - I found a statement that `aria-labelledby` can be used to reference hidden elements.
+- [Inclusively Hidden | scottohara.me](https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html) - I found the same statement that `aria-labelledby` can be used to reference hidden elements.
+- [Inclusively Hiding & Styling Checkboxes and Radio Buttons – Sara Soueidan, inclusive design engineer](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/) - This article helps me to hide the checkbox inclusively.
 
 ### Tools
 - [RegExr](https://regexr.com/) - create RegEx
