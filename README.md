@@ -414,6 +414,110 @@ It is not created by me. It is created by a GitHub user called [shinnn](https://
 
 ![Alert. Username is too long (maximum is 39 characters). Username may only contain alphanumeric characters or single hyphens, and cannot begin or end with a hyphen.](./images/github-username-complete-criteria.png)
 
+#### Inclusively Hidden Label
+[(Back to top)](#table-of-contents)
+
+Now, let's talk about accessibility.
+
+I notice there is something not quite right. For example, in my HTML markup, the `p` was visually hidden.
+
+```html
+<p id="username-input-label" class="sr-only">Search GitHub username</p>
+<input
+  type="search"
+  aria-labelledby="username-input-label"
+/>
+```
+
+The reason, why I chose this approach is discussed in the [next section](#placeholder-and-label). For now, let's focus on the problem of the above code.
+
+The problem with this is that some assistive technologies can't focus on the text. For example, I use Narrator as my screenreader and it can read the visually hidden text, but it can't focus on the text.
+
+![](./images/narrator-when-trying-to-read-the-visually-hidden-label.png)
+
+So, the better way of solving this issue is to **completely hide the element.**
+
+But, the problem is if I completely hide the element then there's no way assistive technology can access the element. It turned out that I was wrong.
+
+`aria-labelledby` can be used for this situation. (How did I know about this? Research!)
+
+I found that Sara Soueidan has an article called ["*Accessible Icon Buttons*"](https://www.sarasoueidan.com/blog/accessible-icon-buttons/https://www.sarasoueidan.com/blog/accessible-icon-buttons/#technique-%232%3A-accessible-visually-hidden-text-with-hidden-and-aria-labelledby). She saus it clearly that `aria-labelledby` can be used to reference hidden elements.
+
+![That said, the ARIA specification allows the aria-describedby and aria-labelledby attributes to reference hidden elements. This means that those hidden elements can and will then be discoverable and used by screen readers. Great! Highlighted.](./images/sara-aria-lablledby-can-be-used-to-reference-hidden-elements.png)
+
+Scott O'Hara also says the same thing on his article called [*"Inclusively Hidden"*](https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html#exploiting-a-completely-hidden-content-loophole).
+
+![By attaching an aria-describedby or aria-labelledby attribute to a focusable element, and setting the ARIA attribute’s value to the completely hidden element’s id, screen readers will announce the content of the completely hidden element. Highlighted.](./images/scottohara-aria-lablledby-can-be-used-to-reference-hidden-elements.png)
+
+[MDN says the same thing too.](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby)
+
+![The aria-labelledby property value can include content from elements that aren't even visible. While you should provide assistive technology users with the same content and all other users, you can include content from elements with the HTML hidden attribute, CSS display: none, and CSS visibility: hidden in the calculated name string.](./images/mdn-documentation-aria-labelledby.png)
+
+So, I decided to replace the `class="sr-only"` with `hidden` attribute.
+
+```html
+<p id="username-input-label" hidden>Search GitHub username</p>
+<input
+  type="search"
+  aria-labelledby="username-input-label"
+/>
+```
+
+The result is as expected! Narrator is still able to read the label when I `Tab` to the input element. Not only that but also [TalkBack (Android screenreader)](https://en.wikipedia.org/wiki/Google_Talkback) is also able to read the label by saying, *"Search text field. Search GitHub username."*
+
+But, I think this should not always be the way to label an input. If it is possible then a visible label would be the solution. In this case, it is not possible to have a visible label (because of the design) then this approach is valid.
+
+Anyway, I want to let you know that the specification of the `aria-labelledby` says that we should use `aria-label` instead of `aria-labelledby`.
+
+![If the interface is such that it is not possible to have a visible label on the screen, authors SHOULD use aria-label and SHOULD NOT use aria-labelledby. Underlined.](./images/aria-specification-for-aria-labelledby.png)
+
+I just want to share this (nothing more).
+
+#### Placeholder and Label
+
+Take a look at this HTML markup.
+
+```html
+<p id="username-input-label" hidden>Search GitHub username</p>
+<input
+  type="search"
+  id="username-input"
+  placeholder=" "
+  aria-labelledby="username-input-label"
+/>
+<label
+  for="username-input"
+  class="search-form__placeholder"
+  aria-hidden="true"
+>
+  Search GitHub username...
+</label>
+```
+
+You might be wondering, *"Why are you doing such a thing?"*
+
+So, the plan was to make the `label` a placeholder for the search input but at the same time, it is also the `placeholder` of search input.
+
+Sometimes users might forget what the input is about. For example, there was a moment when I need to fill a lot of input fields. Then, I forgot what data I should input. It is because there's no visible label. The hint that told about what the input for is in the placeholder. So, how did I solve the problem (as a user)? Unfortunately, I had to "cut" all the text first, and only then I could see the placeholder or the label of the input.
+
+That was a bad user experience! It is important to know that [placeholders aren’t a replacement for labels](https://html.spec.whatwg.org/multipage/input.html#the-placeholder-attribute).
+
+As a developer, I didn't want my user to have the same experience as I was. So, I made the `label` as a placeholder. It is known as the [*"float label pattern"*](https://uxplanet.org/float-label-pattern-in-ux-form-design-7ab5e33010ab).
+
+So, at first, the `label` is positioned inside the `input`.
+
+![](./images/initial-state-of-the-placeholder.png)
+
+Then, when the user fills the search input, instead of going away (like a normal placeholder), the placeholder moves above the search input.
+
+![](./images/last-state-of-the-placeholder.png)
+
+This is a good approach if there is no visible label. But, if it is possible to have a visible label for the search input then it would be the way I would do it. It is because [the floating label has a lot of problems](https://medium.com/simple-human/floating-labels-are-a-bad-idea-82edb64220f6). For example, one of the problems that I notice is that it takes some space for the label. As a result, the logo and the label are really close (not having enough whitespace in between them).
+
+![](./images/float-label-pattern-issue.png)
+
+The [floating label has pros and cons](https://bradfrost.com/blog/post/float-label-pattern/). So, it is not like it is just "bad" or a pattern that should be avoided at all costs. The point is to *use whatever is appropriate at the time*. In this case, a floating label is a good approach in my opinion.
+
 #### Overflowing Text
 [(Back to top)](#table-of-contents)
 
