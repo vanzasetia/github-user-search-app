@@ -1,8 +1,9 @@
 (function () {
   "use strict";
-  const rootClassTheme = localStorage.getItem("root-class");
-  if (rootClassTheme) {
-    const root = document.querySelector("html");
-    root.classList.add(rootClassTheme);
+  const persistedColorPreference = localStorage.getItem("color-mode");
+  const hasPersistedPreference = typeof persistedColorPreference === "string";
+  if (hasPersistedPreference) {
+    const rootElement = document.documentElement;
+    rootElement.classList.add(persistedColorPreference);
   }
 })();

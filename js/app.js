@@ -6,7 +6,7 @@
   );
   const themeSwitcherLabel = document.querySelector(".js-theme-switcher-label");
   const themeSwitcherIcon = document.querySelector(".js-theme-switcher-icon");
-  const root = document.querySelector("html");
+  const rootElement = document.documentElement;
   const searchForm = document.querySelector(".js-search-form");
   const searchInput = document.querySelector(".js-search-input");
   const alertMessage = document.querySelector(".js-alert-message");
@@ -24,11 +24,11 @@
   };
 
   const toggleDarkTheme = () => {
-    root.classList.toggle("is-light");
-    const isLightTheme = root.classList.contains("is-light");
+    rootElement.classList.toggle("is-light");
+    const isLightTheme = rootElement.classList.contains("is-light");
     if (isLightTheme) {
       setThemeSwitcherStateForLightMode();
-      localStorage.setItem("root-class", "is-light");
+      localStorage.setItem("color-mode", "is-light");
     } else {
       setThemeSwitcherStateForDarkMode();
       clearUserThemePreference();
@@ -36,11 +36,11 @@
   };
 
   const toggleLightTheme = () => {
-    root.classList.toggle("is-dark");
-    const isDarkTheme = root.classList.contains("is-dark");
+    rootElement.classList.toggle("is-dark");
+    const isDarkTheme = rootElement.classList.contains("is-dark");
     if (isDarkTheme) {
       setThemeSwitcherStateForDarkMode();
-      localStorage.setItem("root-class", "is-dark");
+      localStorage.setItem("color-mode", "is-dark");
     } else {
       setThemeSwitcherStateForLightMode();
       clearUserThemePreference();
@@ -58,13 +58,13 @@
   };
 
   const clearUserThemePreference = () => {
-    root.classList.remove("is-light", "is-dark");
+    rootElement.classList.remove("is-light", "is-dark");
     localStorage.clear();
   };
 
   const setThemeSwitcherState = () => {
     const isDarkTheme = matchMedia("(prefers-color-scheme: dark)").matches;
-    const rootClassList = document.querySelector("html").classList[0];
+    const rootClassList = rootElement.classList[0];
 
     if (rootClassList) {
       if (rootClassList === "is-dark") {
