@@ -350,8 +350,12 @@
   };
 
   const validateUserInput = (value) => {
-    const githubUserNameRegEx = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
-    return value.match(githubUserNameRegEx);
+    if (typeof value === "string") {
+      const githubUserNameRegEx = /^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i;
+      return value.match(githubUserNameRegEx);
+    }
+
+    return false;
   };
 
   const setURLParameter = (query) => {
