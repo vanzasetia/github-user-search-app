@@ -235,7 +235,7 @@ In JavaScript, there is a better way to deal with `Promise` which is by using `a
 So, in async/await the code will be something like this.
 
 ```javascript
-const fetchUserData = (username) => {
+const fetchUserData = async (username) => {
   try {
     const response = await fetch(`https://api.github.com/users/${username}`);
     const json = await response.json();
