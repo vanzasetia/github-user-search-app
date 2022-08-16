@@ -9,6 +9,7 @@
   - [Articles](#articles)
   - [Tools](#tools)
   - [Validation](#validation)
+- [Notes](#notes)
 
 ## Overview
 This the place where I document everything about this project. Feel free to take a look.
@@ -102,3 +103,7 @@ These are the guidelines that I follow when I write the code.
 - [Ajax (programming) - Wikipedia](https://en.wikipedia.org/wiki/Ajax_(programming))
 - [XMLHttpRequest - Wikipedia](https://en.wikipedia.org/wiki/XMLHttpRequest)
 - [Title Capitalization Rules | Grammarly](https://www.grammarly.com/blog/capitalization-in-the-titles/)
+
+## Notes
+
+`xmlhttprequest.js` and `promise.js` are not up to date with the `app.js`.
