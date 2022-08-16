@@ -520,6 +520,62 @@ This is a good approach if there is no visible label. But, if it is possible to 
 
 The [floating label has pros and cons](https://bradfrost.com/blog/post/float-label-pattern/). So, it is not like it is just "bad" or a pattern that should be avoided at all costs. The point is to *use whatever is appropriate at the time*. In this case, a floating label is a good approach in my opinion.
 
+#### Hide Checkbox Inclusively
+[(Back to top)](#table-of-contents)
+
+I was hiding the checkbox visually by using the `sr-only` class which did make the checkbox visually hidden but it is still accessible by assistive technology.
+
+```html
+<input
+  type="checkbox"
+  class="sr-only"
+/>
+```
+
+But, there is a problem with that approach. When Narrator is focusing or trying to highlight the checkbox, it is just a tiny square.
+
+![](./images/narrator-when-focus-on-the-old-checkbox.png)
+
+Also, Sara Soueidan says that in her article called [*"Inclusively Hiding & Styling Checkboxes and Radio Buttons"*](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/#hiding-the-checkboxes-inclusively) that, *"[...] **while the `sr-only` utility class is great for visually-hiding static content (e.g. text), it should not be used to hide interactive elements.**"*
+
+![](./images/sara-sr-only-should-not-be-used-to-hide-interactive-elements.png)
+
+So, I need to find another way to hide it visually but it is there "physically".
+
+As you may already guess, I would follow what Sara has suggested in that article which is by using absolute positioning. Then, I made the checkbox fill the entire container of the theme switcher element. Lastly, to hide it visually, `opacity: 0;` on the checkbox.
+
+Here is the HTML.
+
+```html
+<div class="theme-switcher">
+  <input
+    type="checkbox"
+    class="theme-switcher__checkbox"
+  />
+</div>
+```
+
+Here is the styling.
+
+```css
+.theme-switcher {
+  position: relative;
+}
+
+.theme-switcher__checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+```
+
+Now, when I try using Narrator again, the checkbox is no longer a tiny square.
+
+![](./images/narrator-when-focus-on-the-new-checkbox.png)
+
 #### Overflowing Text
 [(Back to top)](#table-of-contents)
 
