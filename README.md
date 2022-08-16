@@ -319,7 +319,9 @@ if (rootClassTheme) {
 }
 ```
 
-So, what the code does is check if the `localStorage` saved the latest user's selected color scheme. If it has, then apply the color scheme by adding the class to the `html` element.
+I put the JavaScript code inside a file called [`user-preference.js`](./js/user-preference.js). Then, the magic trick is to make the `script` as a synchronous script (instead of using `defer` attribute). It means that the `script` will be executed as soon as the browsers find it. This way, I can set the user's preference ahead of time before the `DOMContentLoaded` event fired.
+
+About the code snippet, it is checking if the `localStorage` saved the latest user's selected color scheme. If it has, then apply the color scheme by adding the class to the `html` element.
 
 #### Flashing
 [(Back to top)](#table-of-contents)
