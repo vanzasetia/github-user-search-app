@@ -49,6 +49,7 @@ These are the guidelines that I follow when I write the code.
 - [<input type="url"> - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url) - it has an interesting example about the use case of [`<detalist>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist) element.
 - [aria-labelledby - Accessibility | MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) - MDN documentation says, "*The `aria-labelledby` property value can include content from elements that aren't even visible.*".
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.3 - `aria-lablledby` Specifications](https://w3c.github.io/aria/#aria-labelledby)
+- [HTML attribute: `rel` - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
 
 ### Articles
 - [How to Disable Links | CSS-Tricks](https://css-tricks.com/how-to-disable-links/)
