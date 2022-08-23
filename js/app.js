@@ -141,6 +141,7 @@
     a.href = url;
     a.textContent = text;
     a.classList.add(className);
+    a.rel = "nofollow me";
     return a;
   };
 
