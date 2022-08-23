@@ -331,6 +331,7 @@
         twitter_username: twitter,
         company
       } = await data;
+      document.title = `${username} | devfinder`;
       showAvatar(avatar, username);
       showName(name);
       showUserName(username, githubProfileURL);
@@ -343,7 +344,6 @@
       showWebsite(blog);
       showTwitter(twitter);
       showCompany(company);
-      document.title = `devfinder | ${username}`;
     } catch (error) {
       console.error(error);
     }
