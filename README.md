@@ -639,6 +639,51 @@ I think this is a good solution because not only does it fix the overflowing iss
 
 But, I still use GitHub's approach on how to solve the issue. The reason is that the challenge is trying to create the website looking as close to the design as possible.
 
+#### Focus Visible Styling Issue
+[(Back to top)](#table-of-contents)
+
+Finally! I can completely forget about this project!
+
+But... Wait a minute! What is going on with the `:focus-visible` styling?
+
+![Focused on the https://github.blog link. There is only a dotted outline on the right side of the text content.](./images/focus-visible-styling-issue.png)
+
+It was okay though.
+
+![Focused on the https://github.blog link. There is a dotted outline around the link.](./images/focus-visible-styling-before-fixing-overflowing-text-issue.png)
+
+After a little bit of investigation, the issue is happening because of the `overflow: hidden` on the parent element of the link, which is the `li` element.
+
+So, how to fix this issue?
+
+Well, let's see how GitHub solves this issue! (Or I should say, let me copy-paste more code from GitHub 🤣)
+
+![](./images/github-link-focus-visible-styling.png)
+
+The way GitHub solves the issue is by setting the `outline-offset` with a negative value. This way the outline will no longer be overflowing. So, the outline is inside the link element. That's why it can show everything.
+
+While my code was to give some whitespace between the outlines so that it looks nice.
+
+```css
+.result__link:focus-visible {
+  outline: 0.1875rem dotted var(--focus-visible-outline-color);
+  outline-offset: 0.3125rem;
+}
+```
+
+But, it is not the case now. Now, all I need to do is to change the `outline-offset` with a negative value. I also changed the `outline-style` from `dotted` to `dashed` and reduced the amount of the `outline-width`.
+
+```css
+.result__link:focus-visible {
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
+}
+```
+
+**Here is the final result.**
+
+![Focused on the https://github.blog link. There is a dashed outline around the link.](./images/solution-for-the-focus-visible-styling-issue.png)
+
 ### Feedback and Suggestions
 [(Back to top)](#table-of-contents)
 
