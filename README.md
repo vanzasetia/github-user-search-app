@@ -228,9 +228,7 @@ fetch(`https://api.github.com/users/${username}`)
 #### Elegant Way to Work with Promises
 [(Back to top)](#table-of-contents)
 
-In real life, sometimes it is really hard to keep our promises. Sometimes, I need to break another promise to keep another promise. It can be complicated! But, how about in the JavaScript world?
-
-In JavaScript, there is a better way to deal with `Promise` which is by using `async` and `await` keywords. So, instead of keeping doing `.then()` or even worse a lot of `callback` functions we can deal with it more elegantly.
+There is a better way to deal with `Promise` which is by using `async` and `await` keywords. So, instead of keeping doing `.then()` or even worse a lot of `callback` functions we can deal with it more elegantly.
 
 So, in async/await the code will be something like this.
 
