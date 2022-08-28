@@ -284,32 +284,6 @@ svg {
   fill: currentColor;
 }
 
-.skip-content {
-  display: inline-block;
-  position: fixed;
-  top: 3rem;
-  left: 0;
-  transform: translateX(-200%);
-  z-index: 200;
-  background-color: rgb(250, 250, 250);
-  padding: 1em 2em;
-  font-size: 1.25rem;
-  -webkit-text-decoration: 0.1em solid;
-  text-decoration: 0.1em solid;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .skip-content {
-    transition: transform 0.3s ease 0s;
-  }
-}
-.skip-content:focus,
-.skip-content:focus-visible {
-  transform: translate(0);
-  outline: 0.2em dashed var(--focus-visible-outline-color);
-  outline-offset: 0.25em;
-}
-
 /*
  * Make sure when the user disable
  * JavaScript the content is hidden.
