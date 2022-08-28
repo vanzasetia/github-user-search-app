@@ -35,6 +35,6 @@
 
 .theme-switcher__checkbox:focus + .theme-switcher__text,
 .theme-switcher__checkbox:focus-visible + .theme-switcher__text {
-  outline: rem(3) dotted var(--focus-visible-outline-color);
-  outline-offset: rem(5);
+  outline: rem(2) dashed var(--focus-visible-outline-color);
+  outline-offset: rem(-2);
 }

@@ -345,8 +345,8 @@ svg {
 
 .theme-switcher__checkbox:focus + .theme-switcher__text,
 .theme-switcher__checkbox:focus-visible + .theme-switcher__text {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
 }
 
 .search-form {
@@ -375,8 +375,8 @@ svg {
 }
 .search-form__input:focus-visible,
 .search-form__input:focus {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
 }
 @media screen and (prefers-reduced-motion: no-preference) {
   .search-form__input {
@@ -445,8 +445,8 @@ svg {
 }
 .search-form__button:focus-visible,
 .search-form__button:focus {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
 }
 .search-form__button:hover,
 .search-form__button:active {
@@ -555,8 +555,8 @@ svg {
 }
 .result__username:focus-visible,
 .result__username:focus {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
 }
 .result__username:hover,
 .result__username:active {
@@ -643,8 +643,8 @@ svg {
 }
 .result__link:focus-visible,
 .result__link:focus {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
 }
 
 .is-not-available {
@@ -663,8 +663,8 @@ svg {
 }
 .header__home:focus-visible,
 .header__home:focus {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
 }
 
 .header .container {
@@ -687,8 +687,8 @@ svg {
 }
 .attribution__link:focus-visible,
 .attribution__link:focus {
-  outline: 0.1875rem dotted var(--focus-visible-outline-color);
-  outline-offset: 0.3125rem;
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
 }
 .attribution__link:hover,
 .attribution__link:active {
