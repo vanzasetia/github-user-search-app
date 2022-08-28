@@ -312,10 +312,11 @@ Next! How did I prevent the app from *flashing*?
 I had this JavaScript code to check the user's latest selected color scheme.
 
 ```javascript
-const rootClassTheme = localStorage.getItem("root-class");
-if (rootClassTheme) {
-  const root = document.querySelector("html");
-  root.classList.add(rootClassTheme);
+const persistedColorPreference = localStorage.getItem("color-mode");
+const hasPersistedPreference = typeof persistedColorPreference === "string";
+if (hasPersistedPreference) {
+  const rootElement = document.documentElement;
+  rootElement.classList.add(persistedColorPreference);
 }
 ```
 
