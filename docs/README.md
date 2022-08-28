@@ -72,6 +72,8 @@ These are the guidelines that I follow when I write the code.
 - [Accessible Icon Buttons – Sara Soueidan, inclusive design engineer](https://www.sarasoueidan.com/blog/accessible-icon-buttons/) - I found a statement that `aria-labelledby` can be used to reference hidden elements.
 - [Inclusively Hidden | scottohara.me](https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html) - I found the same statement that `aria-labelledby` can be used to reference hidden elements.
 - [Inclusively Hiding & Styling Checkboxes and Radio Buttons – Sara Soueidan, inclusive design engineer](https://www.sarasoueidan.com/blog/inclusively-hiding-and-styling-checkboxes-and-radio-buttons/) - This article helps me to hide the checkbox inclusively.
+- [WebAIM: Skip Navigation Links (#multiple)](https://webaim.org/techniques/skipnav/#multiple) - This article says that, *"For pages that have very few navigable items preceding the main content, a skip link may not be necessary at all."* So, "Skip to main content" link for this challenge is not a necessary thing. But, I need to keep in mind that, *"[...] the purpose of skip navigation links is to make keyboard navigation more efficient."*
+- [I Used The Web For A Day With Just A Keyboard — Smashing Magazine](https://www.smashingmagazine.com/2018/07/web-with-just-a-keyboard/) - An incredible article that helps me understand how the keyboard's user interacts with websites. Also, I learn a new ARIA attribute, [`aria-keyshortcuts`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-keyshortcuts).
 
 ### Tools
 - [RegExr](https://regexr.com/) - create RegEx
