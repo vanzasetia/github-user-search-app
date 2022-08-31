@@ -147,33 +147,32 @@
       <h1 class="sr-only">GitHub user app example</h1>
       <div class="container">
         <form class="search-form js-search-form" autocomplete="on">
-          <div role="search">
-            <p id="username-input-label" hidden>Search GitHub username</p>
-            <input
-              type="search"
-              name="username"
-              id="username-input"
-              class="search-form__input js-search-input"
-              placeholder=" "
-              required="required"
-              autocomplete="username"
-              aria-labelledby="username-input-label"
-              aria-describedby="error"
-            />
-            <label
-              for="username-input"
-              class="search-form__placeholder"
-              aria-hidden="true"
-            >
-              Search GitHub username...
-            </label>
-            <p
-              id="error"
-              class="search-form__error js-alert-message"
-              aria-live="polite"
-            ></p>
-            <button class="search-form__button" type="submit">Search</button>
-          </div>
+          <p id="username-input-label" hidden>Search GitHub username</p>
+          <input
+            type="text"
+            name="username"
+            id="username-input"
+            class="search-form__input js-search-input"
+            placeholder=" "
+            required="required"
+            autocomplete="username"
+            inputmode="search"
+            aria-labelledby="username-input-label"
+            aria-describedby="error"
+          />
+          <label
+            for="username-input"
+            class="search-form__placeholder"
+            aria-hidden="true"
+          >
+            Search GitHub username...
+          </label>
+          <p
+            id="error"
+            class="search-form__error js-alert-message"
+            aria-live="polite"
+          ></p>
+          <button class="search-form__button" type="submit">Search</button>
         </form>
         <div class="result">
           <img
