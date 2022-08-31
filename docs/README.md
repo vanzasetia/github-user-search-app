@@ -50,6 +50,7 @@ These are the guidelines that I follow when I write the code.
 - [aria-labelledby - Accessibility | MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) - MDN documentation says, "*The `aria-labelledby` property value can include content from elements that aren't even visible.*".
 - [Accessible Rich Internet Applications (WAI-ARIA) 1.3 - `aria-lablledby` Specifications](https://w3c.github.io/aria/#aria-labelledby)
 - [HTML attribute: `rel` - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
+- [ARIA live regions - Accessibility | MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
 
 ### Articles
 - [How to Disable Links | CSS-Tricks](https://css-tricks.com/how-to-disable-links/)
