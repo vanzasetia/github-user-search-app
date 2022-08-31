@@ -316,6 +316,11 @@
     }
   };
 
+  const notifyUser = (username) => {
+    const notification = document.querySelector(".js-notification");
+    notification.textContent = `results updated to ${username}'s GitHub profile`;
+  };
+
   const showUserData = async (data) => {
     try {
       const {
@@ -334,6 +339,7 @@
         company
       } = await data;
       document.title = `${username} | devfinder`;
+      notifyUser(username);
       showAvatar(avatar, username);
       showName(name, username);
       showUserName(username, githubProfileURL);
