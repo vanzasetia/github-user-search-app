@@ -188,11 +188,12 @@
     avatar.alt = alternativeText;
   };
 
-  const showName = (nickname) => {
+  const showName = (nickname, username) => {
     const name = document.querySelector(".js-name");
     nickname = validateData(nickname);
 
     if (nickname === "Not Available") {
+      nickname = `${username}'s GitHub Profile`;
       setElementStateToNotAvailable(name, name, nickname, "sr-only");
     } else {
       setTextToAvailable(name, name, nickname, "sr-only");
@@ -334,7 +335,7 @@
       } = await data;
       document.title = `${username} | devfinder`;
       showAvatar(avatar, username);
-      showName(name);
+      showName(name, username);
       showUserName(username, githubProfileURL);
       showJoinDate(joinDate);
       showBio(bio);
