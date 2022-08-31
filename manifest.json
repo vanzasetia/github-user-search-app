@@ -6,29 +6,29 @@
 	"scope": "/",
   "icons": [
     {
-      "src": "/favicons/frontendmentor-100x100.png",
+      "src": "/favicons/devfinder-100x100.png",
       "type": "image/png",
       "sizes": "100x100"
     },
     {
-      "src": "/favicons/frontendmentor-192x192.png",
+      "src": "/favicons/devfinder-192x192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/frontendmentor.png",
+      "src": "/images/devfinder.png",
       "type": "image/png",
       "sizes": "320x320"
     },
     {
-      "src": "/favicons/frontendmentor-512x512.png",
+      "src": "/favicons/devfinder-512x512.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "/svg/frontendmentor-mobile.svg",
+      "src": "/svg/devfinder-favicon.svg",
       "type": "image/svg",
-      "sizes": "192x192 512x512",
+      "sizes": "192x192",
       "purpose": "maskable"
     }
 	],
