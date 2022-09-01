@@ -708,6 +708,8 @@ I am still new at asynchronous programming. So, if you notice some mistakes or s
 
 Thanks to [@shinnn](https://officialdevfinder.netlify.app/?user=shinnn) for the Regular Expression to validate the user's input! It saves a lot of my time and energy for sure! 👍
 
+Thanks to [@grace-snow](https://www.frontendmentor.io/profile/grace-snow) for helping me improve the accessibility of the site! She has been really helpful in helping to learn about web accessibility (and much more!). I can’t thank her enough!
+
 ## License
 [(Back to top)](#table-of-contents)
 
