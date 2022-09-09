@@ -2,9 +2,9 @@
 // Note: If the user font-size setting is 16px, then this 'em' is equal to this in 'px'
 $breakpoints-up: (
   "tiny": 37.5em, // => 600px
-  "very-small": 59.375em, // => 950px
+  "very-small": 53.125em, // => 850px
 );
 $breakpoints-down: (
   "tiny": 37.4375em, // => 599px
-  "very-small": 59.3125em, // 949px
+  "very-small": 53.0625em, // 849px
 );

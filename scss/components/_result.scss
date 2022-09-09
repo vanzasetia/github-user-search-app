@@ -74,11 +74,7 @@
 
 .result__name {
   color: var(--result-name-color);
-  font-size: rem(16);
-
-  @include breakpoint-up("tiny") {
-    font-size: rem(26);
-  }
+  font-size: clamp(1rem, calc(-0.04rem + 4.44vw), 1.63rem);
 }
 
 .result__username {
@@ -117,11 +113,7 @@
 }
 
 .result__category {
-  font-size: rem(12);
-
-  @include breakpoint-up("tiny") {
-    font-size: rem(13);
-  }
+  font-size: clamp(0.75rem, calc(0.65rem + 0.44vw), 0.81rem);
 }
 
 .result__number {
@@ -129,11 +121,7 @@
   margin-top: rem(8);
   color: var(--result-number-color);
   font-weight: 700;
-  font-size: rem(16);
-
-  @include breakpoint-up("tiny") {
-    font-size: rem(22);
-  }
+  font-size: clamp(1rem, calc(0.38rem + 2.67vw), 1.38rem);
 }
 
 .result__details {

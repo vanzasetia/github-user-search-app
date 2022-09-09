@@ -2,13 +2,5 @@
 
 .container {
   margin: 0 auto;
-  max-width: rem(350);
-
-  @include breakpoint-up("tiny") {
-    max-width: rem(580);
-  }
-
-  @include breakpoint-up("very-small") {
-    max-width: rem(730);
-  }
+  max-width: var(--container-max-width);
 }

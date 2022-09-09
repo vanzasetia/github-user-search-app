@@ -84,6 +84,9 @@ video {
   --very-light-blue: hsl(227, 100%, 98%);
   --white: hsl(0, 0%, 100%);
   --primary-transition: 250ms ease-in-out;
+  --container-max-width: clamp(21.88rem, calc(6.39rem + 66.09vw), 45.63rem);
+  --body-padding: clamp(1.5rem, calc(0.03rem + 6.26vw), 3.75rem);
+  --landmark-font-size: clamp(0.81rem, calc(0.6rem + 0.89vw), 0.94rem);
   --header-logo-color: var(--very-dark-blue-200);
   --link-color: var(--dark-blue-100);
   --body-background-color: var(--very-light-blue);
@@ -216,7 +219,7 @@ body {
   flex-direction: column;
   justify-content: center;
   background-color: var(--body-background-color);
-  padding: 1.875rem 1.5rem;
+  padding: var(--body-padding);
   color: var(--body-font-color);
 }
 @media screen and (prefers-reduced-motion: no-preference) {
@@ -225,28 +228,11 @@ body {
       color var(--primary-transition);
   }
 }
-@media screen and (min-width: 37.5em) {
-  body {
-    padding: 2.5rem;
-  }
-}
-@media screen and (min-width: 59.375em) {
-  body {
-    padding: 3.75rem;
-  }
-}
 
 header,
 main,
 footer {
-  font: 0.8125rem/1.6 "Space Mono", monospace;
-}
-@media screen and (min-width: 37.5em) {
-  header,
-  main,
-  footer {
-    font-size: 0.9375rem;
-  }
+  font: var(--landmark-font-size) / 1.6 "Space Mono", monospace;
 }
 
 p {
@@ -296,17 +282,7 @@ svg {
 
 .container {
   margin: 0 auto;
-  max-width: 21.875rem;
-}
-@media screen and (min-width: 37.5em) {
-  .container {
-    max-width: 36.25rem;
-  }
-}
-@media screen and (min-width: 59.375em) {
-  .container {
-    max-width: 45.625rem;
-  }
+  max-width: var(--container-max-width);
 }
 
 .theme-switcher {
@@ -503,7 +479,7 @@ svg {
     padding: 2.5rem;
   }
 }
-@media screen and (min-width: 59.375em) {
+@media screen and (min-width: 53.125em) {
   .result {
     grid-template-rows: repeat(auto-fill, minmax(3.75rem, 1fr));
     grid-template-columns: 7.5rem repeat(2, 1fr);
@@ -532,7 +508,7 @@ svg {
   flex-direction: column;
   justify-content: center;
 }
-@media screen and (min-width: 59.375em) {
+@media screen and (min-width: 53.125em) {
   .result__person {
     flex-direction: row;
     justify-content: space-between;
@@ -541,12 +517,7 @@ svg {
 
 .result__name {
   color: var(--result-name-color);
-  font-size: 1rem;
-}
-@media screen and (min-width: 37.5em) {
-  .result__name {
-    font-size: 1.625rem;
-  }
+  font-size: clamp(1rem, -0.04rem + 4.44vw, 1.63rem);
 }
 
 .result__username {
@@ -590,12 +561,7 @@ svg {
 }
 
 .result__category {
-  font-size: 0.75rem;
-}
-@media screen and (min-width: 37.5em) {
-  .result__category {
-    font-size: 0.8125rem;
-  }
+  font-size: clamp(0.75rem, 0.65rem + 0.44vw, 0.81rem);
 }
 
 .result__number {
@@ -603,12 +569,7 @@ svg {
   margin-top: 0.5rem;
   color: var(--result-number-color);
   font-weight: 700;
-  font-size: 1rem;
-}
-@media screen and (min-width: 37.5em) {
-  .result__number {
-    font-size: 1.375rem;
-  }
+  font-size: clamp(1rem, 0.38rem + 2.67vw, 1.38rem);
 }
 
 .result__details {

@@ -11,6 +11,9 @@
   --very-light-blue: hsl(227, 100%, 98%);
   --white: hsl(0, 0%, 100%);
   --primary-transition: 250ms ease-in-out;
+  --container-max-width: clamp(21.88rem, calc(6.39rem + 66.09vw), 45.63rem);
+  --body-padding: clamp(1.5rem, calc(0.03rem + 6.26vw), 3.75rem);
+  --landmark-font-size: clamp(0.81rem, calc(0.6rem + 0.89vw), 0.94rem);
 
   --header-logo-color: var(--very-dark-blue-200);
   --link-color: var(--dark-blue-100);
@@ -138,31 +141,19 @@ body {
   flex-direction: column;
   justify-content: center;
   background-color: var(--body-background-color);
-  padding: rem(30) rem(24);
+  padding: var(--body-padding);
   color: var(--body-font-color);
 
   @include prefers-motion {
     transition: background-color var(--primary-transition),
       color var(--primary-transition);
   }
-
-  @include breakpoint-up("tiny") {
-    padding: rem(40);
-  }
-
-  @include breakpoint-up("very-small") {
-    padding: rem(60);
-  }
 }
 
 header,
 main,
 footer {
-  font: #{rem(13)}/ 1.6 "Space Mono", monospace;
-
-  @include breakpoint-up("tiny") {
-    font-size: rem(15);
-  }
+  font: var(--landmark-font-size) / 1.6 "Space Mono", monospace;
 }
 
 p {
