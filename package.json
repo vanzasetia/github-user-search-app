@@ -14,9 +14,10 @@
     "format": "npm-run-all sort:scss semistandard:js prettier",
 
     "compile:sass": "sass scss/main.scss css/style.css --no-source-map",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.css --output css/style.css",
-    "compressed:css": "sass scss/main.scss css/style.min.css --style=compressed --no-source-map",
-    "ready": "npm-run-all compile:sass sort:scss semistandard:js prefix:css prettier compressed:css"
+    "build:css": "postcss ./css/style.css -o ./css/style.min.css --use autoprefixer node-css-mqpacker cssnano --no-map",
+    "build:js": "terser ./js/app.js --output ./js/app.min.js --compress --mangle",
+    "purify:css": "purifycss ./css/style.min.css ./index.html ./js/app.js --min --out ./css/style.min.css --info",
+    "ready": "npm-run-all sort:scss compile:sass build:css purify:css semistandard:js prettier build:js"
   },
   "postcss": {
     "syntax": "postcss-scss",
@@ -28,7 +29,10 @@
     }
   },
   "semistandard": {
-    "globals": [ "localStorage", "matchMedia" ]
+    "globals": [
+      "localStorage",
+      "matchMedia"
+    ]
   },
   "author": "",
   "license": "MIT",
@@ -36,12 +40,16 @@
     "autoprefixer": "^10.4.8",
     "browser-sync": "^2.27.10",
     "css-declaration-sorter": "^6.3.0",
+    "cssnano": "^5.1.13",
+    "node-css-mqpacker": "^9.0.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
     "postcss-cli": "^10.0.0",
     "postcss-scss": "^4.0.4",
     "prettier": "^2.7.1",
+    "purify-css": "^1.2.5",
     "sass": "^1.54.0",
-    "semistandard": "^16.0.1"
+    "semistandard": "^16.0.1",
+    "terser": "^5.15.0"
   }
 }
