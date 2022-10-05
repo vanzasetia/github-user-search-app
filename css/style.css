@@ -12,9 +12,9 @@ html:focus-within {
 
 /* Set core body defaults */
 body {
-  text-rendering: optimizeSpeed;
   min-height: 100vh;
   line-height: 1.5;
+  text-rendering: optimizeSpeed;
 }
 
 /* Inherit fonts for inputs and buttons */
@@ -155,11 +155,8 @@ video {
   *,
   *::before,
   *::after {
-    -webkit-animation-duration: 1ms !important;
     animation-duration: 1ms !important;
-    -webkit-animation-delay: -1ms !important;
     animation-delay: -1ms !important;
-    -webkit-animation-iteration-count: 1 !important;
     animation-iteration-count: 1 !important;
     transition-delay: 0s !important;
     transition-duration: 0s !important;
@@ -177,11 +174,6 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
-}
-
-::-moz-selection {
-  background-color: rgb(22, 95, 204);
-  color: rgb(242, 242, 242);
 }
 
 ::selection {
@@ -388,19 +380,11 @@ svg {
   }
 }
 
-.search-form__input:not(:-moz-placeholder-shown) ~ .search-form__placeholder {
-  top: -1.5625rem;
-  left: 2.1875rem;
-}
-
 .search-form__input:not(:placeholder-shown) ~ .search-form__placeholder {
   top: -1.5625rem;
   left: 2.1875rem;
 }
 @media screen and (min-width: 37.5em) {
-  .search-form__input:not(:-moz-placeholder-shown) ~ .search-form__placeholder {
-    top: -1.875rem;
-  }
   .search-form__input:not(:placeholder-shown) ~ .search-form__placeholder {
     top: -1.875rem;
   }
@@ -457,7 +441,6 @@ svg {
   display: grid;
   grid-template-columns: 4.375rem 1fr;
   grid-template-areas: "avatar person" "bio bio" "statistic statistic" "details details";
-  -moz-column-gap: 1.25rem;
   column-gap: 1.25rem;
   row-gap: 1.5625rem;
   box-shadow: var(--primary-box-shadow);
@@ -473,7 +456,6 @@ svg {
 @media screen and (min-width: 37.5em) {
   .result {
     grid-template-columns: 7.5rem 1fr;
-    -moz-column-gap: 2.5rem;
     column-gap: 2.5rem;
     row-gap: 1.875rem;
     padding: 2.5rem;
@@ -577,9 +559,7 @@ svg {
 }
 @media screen and (min-width: 37.5em) {
   .result__details {
-    -moz-column-gap: 4.0625rem;
     column-gap: 4.0625rem;
-    -moz-column-count: 2;
     column-count: 2;
   }
 }
