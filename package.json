@@ -2,22 +2,22 @@
   "name": "my-project",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "devserver": "browser-sync start --server  --watch --port='8080' --no-inject-changes",
+    "devserver": "browser-sync start --server  --watch --port=\"8080\" --no-inject-changes",
     "watch:sass": "sass scss/main.scss css/style.css --watch --no-source-map",
     "start": "npm-run-all --parallel devserver watch:sass",
 
     "prettier": "prettier --write .",
     "semistandard:js": "semistandard --fix js/app.js",
     "sort:scss": "postcss ./scss/ --replace --config package.json",
-    "format": "npm-run-all sort:scss semistandard:js prettier",
+    "lint:scss": "stylelint \"**/*.scss\" --config ./.stylelintrc.json --fix",
+    "format": "npm-run-all sort:scss lint:scss semistandard:js prettier",
 
     "compile:sass": "sass scss/main.scss css/style.css --no-source-map",
-    "build:css": "postcss ./css/style.css -o ./css/style.min.css --use autoprefixer node-css-mqpacker cssnano --no-map",
+    "build:css": "postcss ./css/style.css -o ./css/style.min.css --use autoprefixer cssnano --no-map",
     "build:js": "terser ./js/app.js --output ./js/app.min.js --compress --mangle",
     "purify:css": "purifycss ./css/style.min.css ./index.html ./js/app.js --min --out ./css/style.min.css --info",
-    "ready": "npm-run-all sort:scss compile:sass build:css purify:css semistandard:js prettier build:js"
+    "ready": "npm-run-all sort:scss lint:scss compile:sass build:css purify:css semistandard:js prettier build:js"
   },
   "postcss": {
     "syntax": "postcss-scss",
@@ -50,6 +50,9 @@
     "purify-css": "^1.2.5",
     "sass": "^1.54.0",
     "semistandard": "^16.0.1",
+    "stylelint": "^14.13.0",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^5.0.0",
     "terser": "^5.15.0"
   }
 }
