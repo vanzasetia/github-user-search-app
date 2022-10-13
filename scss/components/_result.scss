@@ -144,7 +144,7 @@
 }
 
 .result__link {
-  @include link-styling();
+  @include link-styling;
   @include focus-visible(var(--focus-visible-outline-color));
 }
 

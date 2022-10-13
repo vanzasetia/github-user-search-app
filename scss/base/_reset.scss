@@ -1,20 +1,19 @@
 @use "../abstracts" as *;
 
 :root {
-  --blue: hsl(212, 100%, 50%);
-  --light-blue: hsl(217, 20%, 51%);
-  --dark-blue-100: hsl(217, 35%, 45%);
-  --dark-blue-200: hsl(222, 41%, 20%);
-  --very-dark-blue-100: hsl(217, 21%, 21%);
-  --very-dark-blue-200: hsl(220, 18%, 16%);
-  --very-dark-blue-300: hsl(220, 40%, 13%);
-  --very-light-blue: hsl(227, 100%, 98%);
-  --white: hsl(0, 0%, 100%);
+  --blue: hsl(212deg 100% 50%);
+  --light-blue: hsl(217deg 20% 51%);
+  --dark-blue-100: hsl(217deg 35% 45%);
+  --dark-blue-200: hsl(222deg 41% 20%);
+  --very-dark-blue-100: hsl(217deg 21% 21%);
+  --very-dark-blue-200: hsl(220deg 18% 16%);
+  --very-dark-blue-300: hsl(220deg 40% 13%);
+  --very-light-blue: hsl(227deg 100% 98%);
+  --white: hsl(0deg 0% 100%);
   --primary-transition: 250ms ease-in-out;
   --container-max-width: clamp(21.88rem, calc(6.39rem + 66.09vw), 45.63rem);
   --body-padding: clamp(1.5rem, calc(0.03rem + 6.26vw), 3.75rem);
   --landmark-font-size: clamp(0.81rem, calc(0.6rem + 0.89vw), 0.94rem);
-
   --header-logo-color: var(--very-dark-blue-200);
   --link-color: var(--dark-blue-100);
   --body-background-color: var(--very-light-blue);
@@ -27,7 +26,7 @@
   --search-form-input-background-color: var(--white);
   --search-form-input-color: var(--very-dark-blue-200);
   --focus-visible-outline-color: var(--very-dark-blue-300);
-  --primary-box-shadow: 0 #{rem(16)} #{rem(30)} #{rem(-10)} rgba(70, 96, 187, 0.2);
+  --primary-box-shadow: 0 #{rem(16)} #{rem(30)} #{rem(-10)} rgb(70 96 187 / 20%);
 }
 
 @media screen and (prefers-color-scheme: dark) {
@@ -40,7 +39,7 @@
     --result-name-color: var(--white);
     --result-statistic-background-color: var(--very-dark-blue-300);
     --result-number-color: var(--white);
-    --theme-switcher-text-hover-color: hsla(222, 44%, 70%);
+    --theme-switcher-text-hover-color: hsl(222deg 44% 70%);
     --search-form-input-background-color: var(--dark-blue-200);
     --search-form-input-color: var(--white);
     --focus-visible-outline-color: var(--white);
@@ -61,7 +60,7 @@
   --search-form-input-background-color: var(--white);
   --search-form-input-color: var(--very-dark-blue-200);
   --focus-visible-outline-color: var(--very-dark-blue-300);
-  --primary-box-shadow: 0 #{rem(16)} #{rem(30)} #{rem(-10)} rgba(70, 96, 187, 0.2);
+  --primary-box-shadow: 0 #{rem(16)} #{rem(30)} #{rem(-10)} rgb(70 96 187 / 20%);
 }
 
 .is-dark {
@@ -73,7 +72,7 @@
   --result-name-color: var(--white);
   --result-statistic-background-color: var(--very-dark-blue-300);
   --result-number-color: var(--white);
-  --theme-switcher-text-hover-color: hsla(222, 44%, 70%);
+  --theme-switcher-text-hover-color: hsl(222deg 44% 70%);
   --search-form-input-background-color: var(--dark-blue-200);
   --search-form-input-color: var(--white);
   --focus-visible-outline-color: var(--white);
@@ -107,13 +106,8 @@ html {
 }
 
 ::selection {
-  background-color: rgb(22, 95, 204);
-  color: rgb(242, 242, 242);
-}
-
-::-moz-selection {
-  background-color: rgb(22, 95, 204);
-  color: rgb(242, 242, 242);
+  background-color: rgb(22 95 204);
+  color: rgb(242 242 242);
 }
 
 /**
@@ -124,7 +118,6 @@ html {
  * For more information: https://gist.github.com/ffoodd/000b59f431e3e64e4ce1a24d5bb36034
  */
 .sr-only {
-  -webkit-clip-path: inset(50%) !important;
   position: absolute !important;
   clip-path: inset(50%) !important;
   margin: -1px !important;

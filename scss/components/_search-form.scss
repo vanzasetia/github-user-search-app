@@ -82,7 +82,7 @@
   @include focus-visible(var(--focus-visible-outline-color));
 
   @include on-event {
-    background-color: hsl(212, 100%, 69%);
+    background-color: hsl(212deg 100% 69%);
   }
 
   @include prefers-motion {
@@ -99,7 +99,7 @@
   position: absolute;
   top: rem(65);
   right: 0;
-  color: hsl(0, 91%, 62%);
+  color: hsl(0deg 91% 62%);
   font-weight: 700;
 
   @include breakpoint-up("tiny") {
