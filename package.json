@@ -28,6 +28,9 @@
       }
     }
   },
+  "browserslist": [
+    "defaults"
+  ],
   "semistandard": {
     "globals": [
       "localStorage",
