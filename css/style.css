@@ -204,7 +204,7 @@ body {
   padding: var(--body-padding);
   color: var(--body-font-color);
 }
-@media screen and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   body {
     transition: background-color var(--primary-transition),
       color var(--primary-transition);
@@ -290,7 +290,7 @@ svg {
   letter-spacing: 0.15625rem;
   text-transform: uppercase;
 }
-@media screen and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .theme-switcher__text {
     transition: color var(--primary-transition);
   }
@@ -336,7 +336,7 @@ svg {
   outline: 0.125rem dashed var(--focus-visible-outline-color);
   outline-offset: -0.125rem;
 }
-@media screen and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .search-form__input {
     transition: background-color var(--primary-transition),
       color var(--primary-transition);
@@ -357,7 +357,7 @@ svg {
   top: 1.25rem;
   left: 2.8125rem;
 }
-@media screen and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .search-form__placeholder {
     transition: top var(--primary-transition), left var(--primary-transition);
   }
@@ -402,7 +402,7 @@ svg {
 .search-form__button:active {
   background-color: hsl(212deg, 100%, 69%);
 }
-@media screen and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .search-form__button {
     transition: background-color var(--primary-transition);
   }
@@ -438,7 +438,7 @@ svg {
   background-color: var(--result-background-color);
   padding: 2rem 1.5rem;
 }
-@media screen and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .result {
     transition: background-color var(--primary-transition);
   }
@@ -520,7 +520,7 @@ svg {
   padding: 1.1875rem;
   text-align: center;
 }
-@media screen and (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) {
   .result__statistic {
     transition: background-color var(--primary-transition);
   }
