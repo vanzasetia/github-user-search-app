@@ -1,5 +1,26 @@
 @use "../abstracts" as *;
 
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Space Mono"), local("Space Mono Bold"), local("SpaceMono Bold"),
+    local("SpaceMono-Bold"), url("/fonts/SpaceMonoBold.woff2") format("woff2"),
+    url("/fonts/SpaceMonoBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Space Mono"), local("Space Mono Regular"),
+    local("SpaceMono Regular"), local("SpaceMono-Regular"),
+    url("/fonts/SpaceMonoRegular.woff2") format("woff2"),
+    url("/fonts/SpaceMonoRegular.woff") format("woff");
+}
+
 :root {
   --blue: hsl(212deg 100% 50%);
   --light-blue: hsl(217deg 20% 51%);
