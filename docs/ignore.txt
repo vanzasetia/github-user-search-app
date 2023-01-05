@@ -1,4 +1,0 @@
-Documentation folder.
-
-The inspiration is coming from:
-https://github.com/h5bp/html5-boilerplate/blob/main/dist/doc/usage.md
