@@ -1,14 +1,26 @@
 @use "../abstracts" as *;
 
 .theme-switcher {
+  display: flex;
+  align-items: center;
+  border: 0;
+}
+
+.theme-switcher:focus-within {
+  outline: rem(2) dashed var(--focus-visible-outline-color);
+  outline-offset: rem(-2);
+}
+
+.theme-switcher__container {
   position: relative;
 }
 
-.theme-switcher__checkbox {
+.theme-switcher__radio {
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
+  cursor: pointer;
   width: 100%;
   height: 100%;
 }
@@ -17,7 +29,6 @@
   display: flex;
   align-items: center;
   gap: rem(16);
-  cursor: pointer;
   font-weight: 700;
   font-size: rem(13);
   letter-spacing: rem(2.5);
@@ -28,13 +39,37 @@
   }
 }
 
-.theme-switcher__checkbox:hover + .theme-switcher__text,
-.theme-switcher__checkbox:active + .theme-switcher__text {
+.theme-switcher__radio:hover + .theme-switcher__text,
+.theme-switcher__radio:active + .theme-switcher__text {
   color: var(--theme-switcher-text-hover-color);
 }
 
-.theme-switcher__checkbox:focus + .theme-switcher__text,
-.theme-switcher__checkbox:focus-visible + .theme-switcher__text {
+.theme-switcher__radio:focus + .theme-switcher__text,
+.theme-switcher__radio:focus-visible + .theme-switcher__text {
   outline: rem(2) dashed var(--focus-visible-outline-color);
   outline-offset: rem(-2);
+}
+
+.theme-switcher__radio[checked] {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+.theme-switcher__radio[checked] + label {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
 }

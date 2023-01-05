@@ -12,6 +12,7 @@
       document.querySelector("html").removeAttribute("class");
     </script>
     <script src="/js/user-preference.min.js"></script>
+    <link rel="stylesheet" href="/css/style.min.css" />
     <script src="/js/app.min.js" defer></script>
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" />
@@ -70,7 +71,7 @@
   </head>
   <body dir="ltr">
     <noscript>
-      <p>Please enable JavaScript on your browser.</p>
+      <p>Please enable JavaScript to use this application.</p>
     </noscript>
     <header class="header">
       <div class="container">
@@ -86,43 +87,59 @@
           </svg>
           <span class="sr-only">devfinder - Home</span>
         </a>
-        <div class="theme-switcher">
-          <input
-            type="checkbox"
-            name="theme-toggle"
-            id="theme-switcher"
-            class="theme-switcher__checkbox js-theme-switcher-checkbox"
-            role="switch"
-            aria-labelledby="theme-switcher-label"
-          />
-          <label
-            for="theme-switcher"
-            class="theme-switcher__text"
-            aria-hidden="true"
-          >
-            <span class="js-theme-switcher-label">light</span>
-            <svg
-              class="theme-switcher__icon"
-              width="20"
-              height="20"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <use
-                href="/svg/sprite.svg#sun"
-                class="js-theme-switcher-icon"
-              ></use>
-            </svg>
-          </label>
-          <p id="theme-switcher-label" hidden>dark mode</p>
-        </div>
+        <fieldset class="theme-switcher">
+          <legend id="theme-switcher-label" class="sr-only">
+            Theme Switcher
+          </legend>
+          <div class="theme-switcher__container">
+            <input
+              type="radio"
+              name="theme-toggle"
+              id="light"
+              class="theme-switcher__radio js-light-theme-radio-button"
+              aria-describedby="theme-switcher-label"
+            />
+            <label for="light" class="theme-switcher__text">
+              <span>light</span>
+              <svg
+                class="theme-switcher__icon"
+                width="20"
+                height="20"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="/svg/sprite.svg#sun"></use>
+              </svg>
+            </label>
+          </div>
+          <div class="theme-switcher__container">
+            <input
+              type="radio"
+              name="theme-toggle"
+              id="dark"
+              class="theme-switcher__radio js-dark-theme-radio-button"
+              aria-describedby="theme-switcher-label"
+            />
+            <label for="dark" class="theme-switcher__text">
+              <span>dark</span>
+              <svg
+                class="theme-switcher__icon"
+                width="20"
+                height="20"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <use href="/svg/sprite.svg#moon"></use>
+              </svg>
+            </label>
+          </div>
+        </fieldset>
       </div>
     </header>
     <main id="main" class="app">
       <h1 class="sr-only">GitHub user app example</h1>
       <div class="container">
         <form class="search-form js-search-form" autocomplete="on">
-          <p id="username-input-label" hidden>Search GitHub username</p>
           <input
             type="text"
             name="username"
@@ -132,14 +149,9 @@
             required
             autocomplete="username"
             inputmode="search"
-            aria-labelledby="username-input-label"
             aria-describedby="error"
           />
-          <label
-            for="username-input"
-            class="search-form__placeholder"
-            aria-hidden="true"
-          >
+          <label for="username-input" class="search-form__placeholder">
             Search GitHub username...
           </label>
           <p

@@ -81,8 +81,6 @@
   color: var(--blue);
   text-decoration: none;
 
-  @include focus-visible(var(--focus-visible-outline-color));
-
   @include on-event {
     text-decoration: underline;
   }
@@ -97,6 +95,7 @@
   grid-area: statistic;
   justify-content: space-between;
   align-items: center;
+  gap: rem(5);
   border-radius: rem(10);
   background-color: var(--result-statistic-background-color);
   padding: rem(19);
@@ -128,24 +127,52 @@
   grid-area: details;
 
   @include breakpoint-up("tiny") {
-    column-gap: rem(65);
-    column-count: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "location twitter"
+      "website company";
+    gap: rem(16) rem(40);
   }
 }
 
 .result__details .result__item {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding-left: rem(30);
+  word-break: break-word;
+}
+
+.result__details .result__item:first-child {
+  grid-area: location;
+}
+
+.result__details .result__item:nth-child(2) {
+  grid-area: website;
+}
+
+.result__details .result__item:nth-child(3) {
+  grid-area: twitter;
+}
+
+.result__details .result__item:last-child {
+  grid-area: company;
+}
+
+.result__icon {
+  float: left;
+  margin-top: rem(4);
+  margin-left: rem(-30);
 }
 
 .result__details .result__item:not(:first-child) {
   margin-top: rem(16);
+
+  @include breakpoint-up("tiny") {
+    margin-top: 0;
+  }
 }
 
 .result__link {
   @include link-styling;
-  @include focus-visible(var(--focus-visible-outline-color));
 }
 
 .is-not-available {

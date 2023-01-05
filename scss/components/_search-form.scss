@@ -25,8 +25,6 @@
   height: rem(60);
   color: var(--search-form-input-color);
 
-  @include focus-visible(var(--focus-visible-outline-color));
-
   @include prefers-motion {
     transition: background-color var(--primary-transition),
       color var(--primary-transition);
@@ -78,8 +76,6 @@
   padding: rem(13) rem(18);
   color: var(--white);
   font-weight: 700;
-
-  @include focus-visible(var(--focus-visible-outline-color));
 
   @include on-event {
     background-color: hsl(212deg 100% 69%);

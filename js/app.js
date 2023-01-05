@@ -1,26 +1,25 @@
 (function () {
   "use strict";
 
-  const themeSwitcherCheckbox = document.querySelector(
-    ".js-theme-switcher-checkbox"
+  const lightThemeRadioButton = document.querySelector(
+    ".js-light-theme-radio-button"
   );
-  const themeSwitcherLabel = document.querySelector(".js-theme-switcher-label");
-  const themeSwitcherIcon = document.querySelector(".js-theme-switcher-icon");
+  const darkThemeRadioButton = document.querySelector(
+    ".js-dark-theme-radio-button"
+  );
   const rootElement = document.documentElement;
   const searchForm = document.querySelector(".js-search-form");
   const searchInput = document.querySelector(".js-search-input");
   const alertMessage = document.querySelector(".js-alert-message");
 
   const setThemeSwitcherStateForDarkMode = () => {
-    themeSwitcherCheckbox.setAttribute("checked", "");
-    themeSwitcherLabel.textContent = "light";
-    themeSwitcherIcon.setAttribute("href", "/svg/sprite.svg#sun");
+    darkThemeRadioButton.setAttribute("checked", "");
+    lightThemeRadioButton.removeAttribute("checked");
   };
 
   const setThemeSwitcherStateForLightMode = () => {
-    themeSwitcherCheckbox.removeAttribute("checked");
-    themeSwitcherLabel.textContent = "dark";
-    themeSwitcherIcon.setAttribute("href", "/svg/sprite.svg#moon");
+    lightThemeRadioButton.setAttribute("checked", "");
+    darkThemeRadioButton.removeAttribute("checked");
   };
 
   const toggleDarkTheme = () => {
@@ -411,7 +410,8 @@
     }
   };
 
-  themeSwitcherCheckbox.addEventListener("change", changeTheme);
+  lightThemeRadioButton.addEventListener("change", changeTheme);
+  darkThemeRadioButton.addEventListener("change", changeTheme);
   document.addEventListener("DOMContentLoaded", setThemeSwitcherState);
   document.addEventListener("DOMContentLoaded", getUserDataBasedOnURL);
   window

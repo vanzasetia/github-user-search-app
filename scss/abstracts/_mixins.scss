@@ -1,15 +1,20 @@
 @use "variables" as *;
 @use "functions" as *;
 
-@mixin focus-visible($color) {
-  &:focus-visible, &:focus {
-    outline: rem(2) dashed $color;
-    outline-offset: rem(-2);
+@mixin focus-styling($color) {
+  outline: rem(2) dashed $color;
+  outline-offset: rem(-2);
+}
+
+@mixin focus($color) {
+  &:focus {
+    @include focus-styling($color);
   }
 }
 
 @mixin on-event() {
-  &:hover, &:active {
+  &:hover,
+  &:active {
     @content;
   }
 }

@@ -31,44 +31,25 @@ select {
     scroll-behavior: auto;
   }
 }
-/* Source: https://github.com/h5bp/html5-boilerplate/blob/main/dist/css/style.css */
-/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
-/*
- * What follows is the result of much research on cross-browser styling.
- * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
- * Kroc Camen, and the H5BP dev community and team.
- */
-/*
- * DISCLAIMER!
- * I had added some changes based on my preference.
- * This is not the original styling!
- */
-/*
- * Remove text-shadow in selection highlight:
- * https://twitter.com/miketaylr/status/12228805301
- *
- * Vendor-prefixed and regular ::selection selectors cannot be combined:
- * https://stackoverflow.com/a/16982510/7133471
- *
- */
-::selection {
-  text-shadow: none;
+@font-face {
+  font-style: normal;
+  font-weight: 700;
+  src: local("Space Mono"), local("Space Mono Bold"), local("SpaceMono Bold"),
+    local("SpaceMono-Bold"), url("/fonts/SpaceMonoBold.woff2") format("woff2"),
+    url("/fonts/SpaceMonoBold.woff") format("woff");
+  font-family: "Space Mono";
+  font-display: swap;
 }
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
+@font-face {
+  font-style: normal;
+  font-weight: 400;
+  src: local("Space Mono"), local("Space Mono Regular"),
+    local("SpaceMono Regular"), local("SpaceMono-Regular"),
+    url("/fonts/SpaceMonoRegular.woff2") format("woff2"),
+    url("/fonts/SpaceMonoRegular.woff") format("woff");
+  font-family: "Space Mono";
+  font-display: swap;
 }
-
 :root {
   --blue: hsl(212deg 100% 50%);
   --light-blue: hsl(217deg 20% 51%);
@@ -160,21 +141,17 @@ video {
     scroll-behavior: auto !important;
   }
 }
-html {
-  box-sizing: border-box;
-}
-
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-::selection {
-  background-color: rgb(22, 95, 204);
-  color: rgb(242, 242, 242);
+:focus {
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
 }
 
 /**
@@ -215,10 +192,6 @@ header,
 main,
 footer {
   font: var(--landmark-font-size) / 1.6 "Space Mono", monospace;
-}
-
-p {
-  font-size: 1em;
 }
 
 img {
@@ -262,20 +235,38 @@ svg {
   display: none !important;
 }
 
+noscript {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
 .container {
   margin: 0 auto;
   max-width: var(--container-max-width);
 }
 
 .theme-switcher {
+  display: flex;
+  align-items: center;
+  border: 0;
+}
+
+.theme-switcher:focus-within {
+  outline: 0.125rem dashed var(--focus-visible-outline-color);
+  outline-offset: -0.125rem;
+}
+
+.theme-switcher__container {
   position: relative;
 }
 
-.theme-switcher__checkbox {
+.theme-switcher__radio {
   position: absolute;
   top: 0;
   left: 0;
   opacity: 0;
+  cursor: pointer;
   width: 100%;
   height: 100%;
 }
@@ -284,7 +275,6 @@ svg {
   display: flex;
   align-items: center;
   gap: 1rem;
-  cursor: pointer;
   font-weight: 700;
   font-size: 0.8125rem;
   letter-spacing: 0.15625rem;
@@ -296,15 +286,39 @@ svg {
   }
 }
 
-.theme-switcher__checkbox:hover + .theme-switcher__text,
-.theme-switcher__checkbox:active + .theme-switcher__text {
+.theme-switcher__radio:hover + .theme-switcher__text,
+.theme-switcher__radio:active + .theme-switcher__text {
   color: var(--theme-switcher-text-hover-color);
 }
 
-.theme-switcher__checkbox:focus + .theme-switcher__text,
-.theme-switcher__checkbox:focus-visible + .theme-switcher__text {
+.theme-switcher__radio:focus + .theme-switcher__text,
+.theme-switcher__radio:focus-visible + .theme-switcher__text {
   outline: 0.125rem dashed var(--focus-visible-outline-color);
   outline-offset: -0.125rem;
+}
+
+.theme-switcher__radio[checked] {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+.theme-switcher__radio[checked] + label {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
 }
 
 .search-form {
@@ -330,11 +344,6 @@ svg {
   width: 100%;
   height: 3.75rem;
   color: var(--search-form-input-color);
-}
-.search-form__input:focus-visible,
-.search-form__input:focus {
-  outline: 0.125rem dashed var(--focus-visible-outline-color);
-  outline-offset: -0.125rem;
 }
 @media (prefers-reduced-motion: no-preference) {
   .search-form__input {
@@ -392,11 +401,6 @@ svg {
   padding: 0.8125rem 1.125rem;
   color: var(--white);
   font-weight: 700;
-}
-.search-form__button:focus-visible,
-.search-form__button:focus {
-  outline: 0.125rem dashed var(--focus-visible-outline-color);
-  outline-offset: -0.125rem;
 }
 .search-form__button:hover,
 .search-form__button:active {
@@ -496,11 +500,6 @@ svg {
   color: var(--blue);
   text-decoration: none;
 }
-.result__username:focus-visible,
-.result__username:focus {
-  outline: 0.125rem dashed var(--focus-visible-outline-color);
-  outline-offset: -0.125rem;
-}
 .result__username:hover,
 .result__username:active {
   text-decoration: underline;
@@ -515,6 +514,7 @@ svg {
   grid-area: statistic;
   justify-content: space-between;
   align-items: center;
+  gap: 0.3125rem;
   border-radius: 0.625rem;
   background-color: var(--result-statistic-background-color);
   padding: 1.1875rem;
@@ -549,19 +549,47 @@ svg {
 }
 @media screen and (min-width: 37.5em) {
   .result__details {
-    column-gap: 4.0625rem;
-    column-count: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "location twitter" "website company";
+    gap: 1rem 2.5rem;
   }
 }
 
 .result__details .result__item {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  padding-left: 1.875rem;
+  word-break: break-word;
+}
+
+.result__details .result__item:first-child {
+  grid-area: location;
+}
+
+.result__details .result__item:nth-child(2) {
+  grid-area: website;
+}
+
+.result__details .result__item:nth-child(3) {
+  grid-area: twitter;
+}
+
+.result__details .result__item:last-child {
+  grid-area: company;
+}
+
+.result__icon {
+  float: left;
+  margin-top: 0.25rem;
+  margin-left: -1.875rem;
 }
 
 .result__details .result__item:not(:first-child) {
   margin-top: 1rem;
+}
+@media screen and (min-width: 37.5em) {
+  .result__details .result__item:not(:first-child) {
+    margin-top: 0;
+  }
 }
 
 .result__link {
@@ -571,11 +599,6 @@ svg {
 .result__link:hover,
 .result__link:active {
   text-decoration: underline;
-}
-.result__link:focus-visible,
-.result__link:focus {
-  outline: 0.125rem dashed var(--focus-visible-outline-color);
-  outline-offset: -0.125rem;
 }
 
 .is-not-available {
@@ -591,11 +614,6 @@ svg {
 
 .header__home {
   color: var(--header-logo-color);
-}
-.header__home:focus-visible,
-.header__home:focus {
-  outline: 0.125rem dashed var(--focus-visible-outline-color);
-  outline-offset: -0.125rem;
 }
 
 .header .container {
@@ -614,14 +632,5 @@ svg {
 
 .attribution__link {
   color: var(--link-color);
-  text-decoration: none;
-}
-.attribution__link:focus-visible,
-.attribution__link:focus {
-  outline: 0.125rem dashed var(--focus-visible-outline-color);
-  outline-offset: -0.125rem;
-}
-.attribution__link:hover,
-.attribution__link:active {
-  text-decoration: underline;
+  text-underline-offset: 0.2em;
 }

@@ -1,4 +1,4 @@
-/*
+/**
  * Make sure when the user disable
  * JavaScript the content is hidden.
  */
@@ -6,4 +6,10 @@
 .no-js main,
 .no-js footer {
   display: none !important;
+}
+
+noscript {
+  font-size: 2rem;
+  line-height: 1.2;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
