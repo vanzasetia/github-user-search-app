@@ -1,29 +1,9 @@
 # Documentation
-[(Back to home)](https://github.com/vanzasetia/github-user-search-app#readme)
 
-## Table of contents
-- [Overview](#overview)
-- [References](#references)
-  - [Guidelines](#guidelines)
-  - [Web doc](#web-doc)
-  - [Articles](#articles)
-  - [Tools](#tools)
-  - [Validation](#validation)
-- [Notes](#notes)
+This is the place where I put all the resources that I find useful to build this project. This can be used for future reference or help anyone that is doing this challenge.
 
-## Overview
-This the place where I document everything about this project. Feel free to take a look.
+## Web Doc
 
-### Guidelines
-
-These are the guidelines that I follow when I write the code.
-- [HTML Best Practices](https://github.com/hail2u/html-best-practices)
-- [Sass Guidelines](https://sass-guidelin.es/)
-- [JavaScript Best Practices](https://www.w3.org/wiki/JavaScript_best_practices)
-
-## References
-
-### Web Doc
 - [XMLHttpRequest - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 - [Ajax - Developer guides | MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX)
 - [XMLHttpRequest.readyState - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/readyState)
@@ -52,7 +32,8 @@ These are the guidelines that I follow when I write the code.
 - [HTML attribute: `rel` - HTML: HyperText Markup Language | MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)
 - [ARIA live regions - Accessibility | MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions)
 
-### Articles
+## Articles
+
 - [How to Disable Links | CSS-Tricks](https://css-tricks.com/how-to-disable-links/)
 - [Error handling while using native fetch API in JavaScript | Learn with Param](https://learnwithparam.com/blog/how-to-handle-fetch-errors/)
 - [Accessibility Matters - Search Form](https://www.a11ymatters.com/pattern/accessible-search/) - this article recommends to put the `role="search"` on the `form` element.
@@ -77,21 +58,24 @@ These are the guidelines that I follow when I write the code.
 - [I Used The Web For A Day With Just A Keyboard — Smashing Magazine](https://www.smashingmagazine.com/2018/07/web-with-just-a-keyboard/) - An incredible article that helps me understand how the keyboard's user interacts with websites. Also, I learn a new ARIA attribute, [`aria-keyshortcuts`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-keyshortcuts).
 - [Maybe Ignore type=search — Adrian Roselli](https://adrianroselli.com/2019/07/ignore-typesearch.html)
 
-### Tools
+## Tools
+
 - [RegExr](https://regexr.com/) - create RegEx
 - [Site-Shot](https://www.site-shot.com/) - take screenshot of the website
 - [Squoosh](https://squoosh.app/) - optimize images
 - [Canva](https://www.canva.com/) - design the banner
 - [Chicago - Title Capitalization Tool - Capitalize My Title - Title Case Tool](https://capitalizemytitle.com/style/Chicago/)
 
-### Validations
+## Validations
+
 - [Meta Tags — Preview, Edit and Generate](https://metatags.io/)
 - [The W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)
 - [HTML Validator](https://validator.w3.org/nu/) - [The site has two warnings regarding the `ul` element has a `role="list"`](https://validator.w3.org/nu/?doc=https%3A%2F%2Fofficialdevfinder.netlify.app%2F). The reason I added a `role="list"` because I set the `list-style` to `none` which will remove the semantic meaning of the `ul` element.
 - [Checklist - The A11Y Project](https://www.a11yproject.com/checklist/)
 - [Grammarly](https://www.grammarly.com/) - it helps me fixing the grammar errors in the `README`.
 
-### Others
+## Others
+
 - [Space Mono](https://fonts.google.com/specimen/Space+Mono)
 - [Useful GitHub gist to learn XMLHttpRequest()](https://gist.github.com/jesperorb/c889de6195ee036724b6263148308c86)
 - [Search | U.S. Web Design System (USWDS)](https://designsystem.digital.gov/components/search/)
@@ -108,7 +92,4 @@ These are the guidelines that I follow when I write the code.
 - [Ajax (programming) - Wikipedia](https://en.wikipedia.org/wiki/Ajax_(programming))
 - [XMLHttpRequest - Wikipedia](https://en.wikipedia.org/wiki/XMLHttpRequest)
 - [Title Capitalization Rules | Grammarly](https://www.grammarly.com/blog/capitalization-in-the-titles/)
-
-## Notes
-
-`xmlhttprequest.js` and `promise.js` are not up to date with the `app.js`.
+- [:focus-within CSS pseudo-class | Can I use... Support tables for HTML5, CSS3, etc](https://caniuse.com/css-focus-within)
