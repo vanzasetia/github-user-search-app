@@ -2,7 +2,7 @@
 
 This is the place where I put all the resources that I find useful to build this project. This can be used for future reference or help anyone that is doing this challenge.
 
-## Web Doc
+## Web documentation
 
 - [XMLHttpRequest - Web APIs | MDN](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 - [Ajax - Developer guides | MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX)
