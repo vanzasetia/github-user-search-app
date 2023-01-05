@@ -519,4 +519,4 @@ Here are screenshots of our Slack conversation.
 
 ## References
 
-> See the [documentation.](./docs/README.md)
+See the [documentation](./docs/README.md).
