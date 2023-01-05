@@ -2,14 +2,14 @@
 
 *.json
 
-scss/abstracts
-scss/vendors
+scss/abstracts/_variables.scss
+
+js/vendors
 
 images/
 favicons/
 icons/
 
-css/style.min.css
-js/*.min.js
+*.min.*
 
 LICENSE
