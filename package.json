@@ -40,7 +40,8 @@
     ]
   },
   "author": "",
-  "license": "MIT",
+  "license": "CC0-1.0",
+  "private": true,
   "devDependencies": {
     "autoprefixer": "^10.4.8",
     "browser-sync": "^2.27.10",

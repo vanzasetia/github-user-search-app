@@ -4,6 +4,12 @@
 
 This is my first API challenge from Frontend Mentor. In this project, I learned about asynchronous programming and worked with a 3rd-party API.
 
+## Disclaimer
+
+This project is solely for learning purposes. I take no any responsibility or liability for the accuracy, completeness, or usefulness of any information provided in this project. You should not use it as a reference for creating your project.
+
+I am currently no longer working on this project.
+
 ## The challenge
 
 My challenge is to build out this GitHub user search app using the GitHub users API and get it looking as close to the design as possible.
@@ -508,7 +514,7 @@ Here are screenshots of our Slack conversation.
 
 ## License
 
-[MIT](./LICENSE)
+[The Unlicense](./UNLICENSE)
 
 ## References
 
