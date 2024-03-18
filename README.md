@@ -483,13 +483,6 @@ Resources:
 - [ryanmcdermott/clean-code-javascript: Clean Code concepts adapted for JavaScript](https://github.com/ryanmcdermott/clean-code-javascript) - I wish that I know this repository when I was writing the JavaScript. This repository contains a lot of best practices on how to write clean JavaScript code. I highly recommend taking some time to read it.
 - [RegExr](https://regexr.com/) - This is the tool that I used when I was crafting or testing a regular expression that I wanted to use. It has a handy cheat sheet and is easy to use. I recommend using it for anyone that wants to create or test some regular expressions.
 
-## Author
-
-- Frontend Mentor - [@vanzasetia](https://frontendmentor.io/profile/vanzasetia)
-- Twitter - [@vanzasetia](https://twitter.com/vanzasetia)
-- Code Newbie - [@vanzasetia](https://community.codenewbie.org/vanzasetia)
-- Want to see me on other platforms? [Check my linktree!](https://linktr.ee/vanzasetia)
-
 ## Acknowledgements
 
 Thanks to [@shinnn](https://officialdevfinder.netlify.app/?user=shinnn) for the regular expression!

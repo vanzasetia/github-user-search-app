@@ -225,7 +225,7 @@ svg {
   fill: currentColor;
 }
 
-/*
+/**
  * Make sure when the user disable
  * JavaScript the content is hidden.
  */
